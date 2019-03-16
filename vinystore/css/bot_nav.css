@@ -1,7 +1,7 @@
 .botnav{
-    background-color: #f2f2f2;
+    background-color:#0d0d0d;
     z-index: 999;
-    border: 1.5px solid #d9d9d9;
+    border-top: 2px solid #b3b3b3;
     border-radius: 2px;
     position: fixed;
     bottom: 0px;
@@ -15,7 +15,7 @@
 
 .botnav-items a{
     text-align: center;
-    color: black;
+    color: #f2f2f2;
     font-family: Raleway, 'sans-serif';
     position: relative;
     padding: 0px 16px 10px 16px;

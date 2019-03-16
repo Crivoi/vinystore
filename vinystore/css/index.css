@@ -1,0 +1,129 @@
+body{
+    background-color: #ffffff;
+}
+
+.filter-container{
+    /* background-color: #cccccc; */
+    position: relative;
+    padding: 0px 75px;
+    top: 75px;
+    border-bottom: 2px solid #cccccc;
+}
+
+.filter-container li, .filter-container li{
+    display: inline-block;
+    position: relative;
+    padding: 20px 10px;
+}
+
+.filter-container .genre-menu-item,
+.filter-container .collection-menu-item{
+    font-family: Raleway, 'sans-serif';
+    padding: 2px 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.filter-container .genre-menu-span,
+.filter-container .collection-menu-span{
+    font-family: Raleway, 'sans-serif';
+    padding: 2px 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.filter-container .genre-menu-item:hover,
+.filter-container .collection-menu-item:hover{
+    background-color: #bf8040;
+    border-radius: 3px;
+    padding: 2px 8px;
+}
+
+.genre-menu, .collection-menu{
+    margin: 0;
+}
+
+#on-sale.collection-menu-item {
+    color: #ff3333;
+}
+
+.form-search{
+    padding: 25px;
+    position: relative;
+}
+
+.form-search .search-input{
+    font-family: Raleway, 'sans-serif';
+    text-decoration: italic;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    font-style: italic;
+}
+
+.form-search .search-img{
+    width: 25px;
+    padding: 0px 25px 0px 40px;
+    position: relative;
+    top: 7px;
+}
+
+.form-search h3{
+    font-family: Raleway, 'sans-serif';
+    float: right;
+    font-size: 20px;
+    position: relative;
+    bottom: 15px;
+}
+
+.content-container{
+    background-color: #f2f2f2;
+    z-index: 900;
+    position: relative;
+    top: 75px;
+    padding-bottom: 35%;
+    display: block;
+}
+
+.content-item{
+    display: inline;
+    padding: 30px;
+    position: relative;
+    left: 40px;
+    top: 40px;
+    width: 25%;
+}
+
+.content-item .content-img{
+    width: 125px;
+    border-radius: 50%;
+}
+.content-item .content-info{
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    bottom: 65px;
+    color: black;
+    font-size: 20px;
+    font-family: Raleway, 'sans-serif';
+    letter-spacing: 1px;
+    width: 30%;
+}
+
+.content-item .content-info:hover{
+    text-decoration: underline;
+    color: #cc9966;
+}
+
+.content-item .content-info p:active{
+    text-decoration: none;
+    color: #261a0d;
+}
+
+.content-container li{
+    display: inline-block;
+}
+
+.content-container ul{
+    margin: 0;
+}
