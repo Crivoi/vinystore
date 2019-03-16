@@ -6,8 +6,11 @@ body{
     background-color: #f2f2f2;
     overflow: hidden;
     z-index: 999;
-    border: 1px solid #d9d9d9;
+    border: 1.5px solid #d9d9d9;
     border-radius: 2px;
+    width: 100%;
+    position: fixed;
+    top: -3px;
 }
 
 .topnav-menu{
@@ -40,7 +43,7 @@ body{
     top: 10px;
     display: inline-block;
     text-decoration: bold;
-    /* padding: 10px 8px; */
+    padding: 1px 8px;
 }
 .topnav .topnav-menu-item{
     float: right;
@@ -59,6 +62,7 @@ body{
     top: 100%;
     display: inline-block;
     left: 25%;
+    padding: 1px 8px;
 }
 
 .topnav .topnav-menu-img{
@@ -71,8 +75,10 @@ body{
 }
 
 .topnav .topnav-menu-btn:hover, .topnav .topnav-logo-btn:hover{
-    background-color: #a6a6a6;
-    color: rgb(24, 23, 23);
-    border-radius: 5px;
+    color:  #cc9966;
+}
+
+.topnav .topnav-menu-btn:active, .topnav .topnav-logo-btn:active{
+    color:  #261a0d;
 }
 
