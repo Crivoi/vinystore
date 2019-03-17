@@ -87,111 +87,111 @@ body{
     bottom: 15px;
 }
 
-.content-container{
+.record-container{
     background-color: #f2f2f2;
     z-index: 900;
     position: relative;
     top: 73px;
-    display: inline-block;
     margin: 0;
     overflow: hidden;
     padding: 10px 50px;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #cccccc;
 }
 
-.record-container{
-    float: right;
-    background-color: white;
-    z-index: 901;
-    position: relative;
-    display: block;
-    margin: 20px;
+.img-magnifier-container img{
+    height: 450px;
     border: 2px solid #cccccc;
-    border-radius: 10px;
-}
-
-.content-item{
-    display: inline-block;
-    padding: 20px;
-    position: relative;
-    left: 30px;
-    top: 20px;
-    width: 20%;
-}
-
-.content-item .content-img{
-    width: 125px;
     border-radius: 50%;
-    position: relative;
-    left: 40px;
-}
-.content-item .content-info{
-    position: relative;
-    display: block;
-    bottom: 10%;
-    font-size: 20px;
-    color: black;
-    letter-spacing: 1px;
-    float: left;
 }
 
-.content-item .content-info:hover{
-    text-decoration: underline;
-    color: #cc9966;
+.img-magnifier-container img:hover{
+    cursor: none;
 }
 
-.content-item .content-info:active{
-    text-decoration: none;
-    color: #261a0d;
+.img-magnifier-glass{
+    position: absolute;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    cursor: none;
+    width: 100px;
+    height: 100px;
+    display: auto;
 }
 
-.content-container li{
+.record-info{
     display: inline-block;
-}
-
-.content-container ul{
-    margin: 0;
-}
-
-.pagination{
     position: relative;
-    bottom: 60px;
-    float: right;
-    letter-spacing: 5px;
-    z-index: 991;
-    padding: 50px;
-    text-align: center;
+    padding: 10px 50px;
+    left: 500px;
+    font-size: 25px;
+    bottom: 400px;
+    letter-spacing: 2px;
 }
 
-.pagination a{
+.info{
+    padding: 15px 8px;
+}
+
+.genre-name{
     text-decoration: none;
-    color: black;
-    font-size: 22px;
+    color:black;
+    padding: 10px 8px;
 }
 
-.pagination a:hover{
-    color: #cc9966;
+.genre-name:hover{
+    background-color: #bf8040;
     border-radius: 5px;
 }
 
-.pagination a:active{
-    color: black;
-    
+.genre-name:active{
+    background-color: #f2f2f2;
 }
 
-.right-arrow{
+#artist-name::before{
+    content: "Artist: ";
+    font-size: 25px;
+
+}
+
+#label-name:before{
+    content: "Label: ";
+    font-size: 25px;
+}
+
+#price-tag:before{
+    content: "Price: ";
+    font-size: 25px;
+}
+
+.wishlist-btn{
     position: relative;
-    width: 75px;
+    bottom: 400px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px;
+    font-size: 15px;
     float: right;
-    margin: 0px;
-    bottom: 400px;
-    right: -340px;
+    right: 465px;
+    padding: 10px;
 }
 
-.left-arrow{
+.wishlist-btn img{
+    width: 20px;
+    float: right;
+}
+
+.checkout-container .mail-list{
     position: relative;
-    width: 75px;
-    float: left;
-    margin: 0px;
-    bottom: 400px;
-    left: -50px;
+    bottom: 300px;
+    float: right;
+    right: 465px;
+}
+
+.checkout-container .mail-list:before{
+    content: "Enter email to get notified : ";
+    font-size: 20px;
+    position: relative;
+
 }
