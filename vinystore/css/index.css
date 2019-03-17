@@ -1,5 +1,8 @@
 body{
     background-color: #ffffff;
+    font-family: Raleway, 'sans-serif';
+    text-decoration: none;
+    color: black;
 }
 
 .filter-container{
@@ -36,6 +39,13 @@ body{
 .filter-container .collection-menu-item:hover{
     background-color: #bf8040;
     border-radius: 3px;
+    padding: 2px 8px;
+}
+
+.filter-container .genre-menu-item:active,
+.filter-container .collection-menu-item:active{
+    color: #bf8040;
+    background-color: white;
     padding: 2px 8px;
 }
 
@@ -80,34 +90,47 @@ body{
     background-color: #f2f2f2;
     z-index: 900;
     position: relative;
-    top: 75px;
-    padding-bottom: 35%;
+    top: 73px;
+    display: inline-block;
+    margin: 0;
+    overflow: hidden;
+    padding: 10px 50px;
+}
+
+.record-container{
+    float: right;
+    background-color: white;
+    z-index: 901;
+    position: relative;
     display: block;
+    margin: 20px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
 }
 
 .content-item{
-    display: inline;
-    padding: 30px;
+    display: inline-block;
+    padding: 20px;
     position: relative;
-    left: 40px;
-    top: 40px;
-    width: 25%;
+    left: 30px;
+    top: 20px;
+    width: 20%;
 }
 
 .content-item .content-img{
     width: 125px;
     border-radius: 50%;
+    position: relative;
+    left: 40px;
 }
 .content-item .content-info{
-    text-decoration: none;
     position: relative;
-    display: inline-block;
-    bottom: 65px;
-    color: black;
+    display: block;
+    bottom: 10%;
     font-size: 20px;
-    font-family: Raleway, 'sans-serif';
+    color: black;
     letter-spacing: 1px;
-    width: 30%;
+    float: left;
 }
 
 .content-item .content-info:hover{
@@ -115,7 +138,7 @@ body{
     color: #cc9966;
 }
 
-.content-item .content-info p:active{
+.content-item .content-info:active{
     text-decoration: none;
     color: #261a0d;
 }
@@ -126,4 +149,48 @@ body{
 
 .content-container ul{
     margin: 0;
+}
+
+.pagination{
+    position: relative;
+    bottom: 30%;
+    float: right;
+    letter-spacing: 5px;
+    z-index: 991;
+    padding: 50px;
+    text-align: center;
+}
+
+.pagination a{
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+}
+
+.pagination a:hover{
+    color: #cc9966;
+    border-radius: 5px;
+}
+
+.pagination a:active{
+    color: black;
+    
+}
+
+.right-arrow{
+    position: relative;
+    width: 75px;
+    float: right;
+    margin: 0px;
+    bottom: 400px;
+    right: -340px;
+}
+
+.left-arrow{
+    position: relative;
+    width: 75px;
+    float: left;
+    margin: 0px;
+    bottom: 400px;
+    left: -50px;
 }
