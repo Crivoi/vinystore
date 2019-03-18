@@ -122,8 +122,16 @@ body{
     width: 125px;
     border-radius: 50%;
     position: relative;
-    left: 40px;
+    left: 30px;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition:         transform .8s ease-in-out;
+}    
+
+.content-item .content-img:hover{
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
 }
+
 .content-item .content-info{
     position: relative;
     display: block;

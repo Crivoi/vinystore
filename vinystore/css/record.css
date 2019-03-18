@@ -124,9 +124,9 @@ body{
     display: inline-block;
     position: relative;
     padding: 10px 50px;
-    left: 500px;
-    font-size: 25px;
-    bottom: 400px;
+    left: 33%;
+    font-size: 20px;
+    bottom: 440px;
     letter-spacing: 2px;
 }
 
@@ -149,49 +149,69 @@ body{
     background-color: #f2f2f2;
 }
 
-#artist-name::before{
+#artist-name:before{
     content: "Artist: ";
-    font-size: 25px;
+    font-size: 20px;
 
+}
+
+#album-name:before{
+    content: "Album: ";
+    font-size: 20px;
 }
 
 #label-name:before{
     content: "Label: ";
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #price-tag:before{
     content: "Price: ";
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.wishlist-btn{
+.checkout-container{
+    padding: 50px 10px;
+}
+
+.checkout-btn{
     position: relative;
-    bottom: 400px;
+    bottom: 425px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 2px 2px;
     font-size: 15px;
-    float: right;
-    right: 465px;
+    /* float: right;
+    right: 675px; */
+    left: 26%;
     padding: 10px;
+    background-color: #cccccc;
 }
 
-.wishlist-btn img{
+#wishlist-btn{
+    left: 47%;
+}
+
+.checkout-btn img{
     width: 20px;
     float: right;
+    padding: 0px 4px;
 }
 
-.checkout-container .mail-list{
-    position: relative;
-    bottom: 300px;
-    float: right;
-    right: 465px;
+.checkout-btn:hover{
+    background-color: #bf8040;
 }
 
-.checkout-container .mail-list:before{
-    content: "Enter email to get notified : ";
-    font-size: 20px;
-    position: relative;
+.checkout-btn:active{
+    background-color: #cccccc;
+    border: none;
+}
 
+.audio-container audio{
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    display: block;
+    bottom: 420px;
+    position: relative;
+    left: 37%;
 }

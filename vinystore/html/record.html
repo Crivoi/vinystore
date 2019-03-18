@@ -13,20 +13,20 @@
 </head>
 <body>
     <nav class ="topnav">
-        <a href = "#home" class = "topnav-logo">
+        <a href = "./index.html" class = "topnav-logo">
             <img src = "../img/logo.png" alt = "logo_img" class = "topnav-logo-img">
             <h4 class = "topnav-logo-btn">Home</h4>
         </a>
         <div class = "topnav-menu">
-                <a  href ="#cart" class = "topnav-menu-item">
+                <a  href ="./shopping_cart.html" class = "topnav-menu-item">
                     <img src = "../img/shopping-cart.png" alt = "cart_img" class = "topnav-menu-img">
                     <h4 class = "topnav-menu-btn">Cart</h4>
                 </a>
-                <a href ="#my_account" class = "topnav-menu-item">
+                <a href ="./my_account.html" class = "topnav-menu-item">
                     <img src = "../img/account-user.png" alt = "account_img" class = "topnav-menu-img">
                     <h4 class = "topnav-menu-btn">Account</h4>
                 </a>    
-                <a href = "#wishlist" class = "topnav-menu-item">
+                <a href = "./wishlist.html" class = "topnav-menu-item">
                     <img src = "../img/wishlist-heart.png" alt = "wishlist_img" class = "topnav-menu-img">
                     <h4 class = "topnav-menu-btn">Wishlist</h4>
                 </a>
@@ -78,20 +78,26 @@
             <a href = "#genre" class = "genre-name" id = "genre">Minimal</a>
             <br>
             <br>
-            <span class = "info" id = "price-tag"><del>100 Ron</del>  80 Ron</span>
+            <qpan class = "info" id = "price-tag"><del>100 Ron</del>  80 Ron</span>
+        </div>
+
+        <div class = "audio-container">
+            <audio controls loop autoplay>
+                <source src = "../audio_clips/audio_test.mp3" type = "audio/mpeg">
+                Your browser does not support audio.
+            </audio>
         </div>
         
         <div class = "checkout-container">
-            <button href = "#wishlist" class = "wishlist-btn">
+            <button href = "#wishlist" class = "checkout-btn" id = "wishlist-btn">
                 <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
-                Add to Wishlist
+                Add to Wishlist 
             </button>
-            <input class = "mail-list" placeholder="E-mail">
+            <button href = "#buy" class = "checkout-btn" id = "buy-btn">
+                <img src = "../img/shopping-cart.png" alt = "wishlist_img">
+                Add to Cart
+            </button>
         </div>
-    </div>
-
-    <div class = "feed-container">
-        
     </div>
 
     <footer class = "botnav">

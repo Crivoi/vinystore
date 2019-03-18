@@ -15,7 +15,7 @@ body{
 
 .topnav-menu{
     position: relative;
-    right: 100px;
+    right: 10%;
 }
 
 .topnav .topnav-logo{
@@ -28,7 +28,7 @@ body{
     letter-spacing: 2px;
     font-family: Raleway, 'sans-serif';
     position: relative;
-    left: 100px;
+    left: 10%;
 }
 
 .topnav .topnav-logo-img{
@@ -82,3 +82,15 @@ body{
     color:  #261a0d;
 }
 
+@media screen and (max-width: 820px){
+    .topnav .topnav-logo-btn, .topnav .topnav-menu-btn{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 420){
+    .topnav .topnav-menu-img{
+        right: 0px;
+        display: none;
+    }
+}
