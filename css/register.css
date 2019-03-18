@@ -1,0 +1,109 @@
+body{
+    font-family: Raleway, 'sans-serif';
+    background-image: url('../img/vinyl-background.gif');;
+    background-size: cover;
+    height: 100vh;
+    padding:0;
+    margin:0;
+}
+
+.username{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.password{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.email{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.username:hover{
+    border: solid #262626;
+}
+  
+.password:hover{
+    border: solid #262626;
+}
+
+.email:hover{
+    border: solid #262626;
+}
+  
+.submit-button {
+    background-color: #7c7c7c;
+    border: 0px;
+    color: white;
+    padding: 12px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:3px;
+}
+
+.submit-button:hover{
+    background-color: #666666;
+}
+
+#username-title{
+    color:#f2f2f2;
+}
+
+#email-title{
+    color:#f2f2f2;
+}
+
+.form-text{
+    color:#f2f2f2;
+}
+
+#password-title{
+    color:#f2f2f2;
+}
+
+.card{ 
+   position:fixed;
+   top:10%;
+   left:42%;
+   width:250px; 
+}
+
+.sign-up-button{
+    background-color: #7c7c7c;
+    border: 0px;
+    color: white;
+    padding: 12px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:3px;
+}
+
+.sign-up-button:hover{
+    background-color: #666666;
+}

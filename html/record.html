@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VinyStore Record</title>
+    <link rel = "stylesheet" type = "text/css" href = "../css/record.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src = "../js/magnifier.js"></script>
+</head>
+<body>
+    <nav class ="topnav">
+        <a href = "./index.html" class = "topnav-logo">
+            <img src = "../img/logo.png" alt = "logo_img" class = "topnav-logo-img">
+            <h4 class = "topnav-logo-btn">Home</h4>
+        </a>
+        <div class = "topnav-menu">
+                <a  href ="#cart" class = "topnav-menu-item">
+                    <img src = "../img/shopping-cart.png" alt = "cart_img" class = "topnav-menu-img">
+                    <h4 class = "topnav-menu-btn">Cart</h4>
+                </a>
+                <a href ="#my_account" class = "topnav-menu-item">
+                    <img src = "../img/account-user.png" alt = "account_img" class = "topnav-menu-img">
+                    <h4 class = "topnav-menu-btn">Account</h4>
+                </a>    
+                <a href = "#wishlist" class = "topnav-menu-item">
+                    <img src = "../img/wishlist-heart.png" alt = "wishlist_img" class = "topnav-menu-img">
+                    <h4 class = "topnav-menu-btn">Wishlist</h4>
+                </a>
+        </div>   
+    </nav>
+
+    <div class = "filter-container">
+        <ul class = "genre-menu">
+            <li>    <span class = "genre-menu-span">Genres</span>   </li>
+            <li>    <a href = "#" class = "genre-menu-item">House</a>   </li>
+            <li>    <a href = "#" class = "genre-menu-item">Techno</a>  </li>
+            <li>    <a href = "#" class = "genre-menu-item">Hip Hop</a> </li>
+            <li>    <a href = "#" class = "genre-menu-item">Classic</a> </li>
+        </ul>
+        <hr>
+        <ul class = "collection-menu">
+            <li>    <span class = "collection-menu-span">Collection</span>  </li>
+            <li>    <a href = "#" class = "collection-menu-item" id = "on-sale">On Sale</a>  </li>
+            <li>    <a href = "#" class = "collection-menu-item">Artists</a> </li>
+            <li>    <a href = "#" class = "collection-menu-item">Labels</a>    </li>
+            <li>    <a href = "#" class = "collection-menu-item">New</a>    </li>
+        </ul>
+        <hr>
+        <form class = "form-search">
+            <a class = "search-btn">
+                <img src = "../img/search.png" alt = "search_img" class = "search-img">
+            </a>
+            <input type = "text" class = "search-input" id = "search" placeholder="Search...">
+            <h3>VinyStore: Buy, Sell, Exchange</h3>
+        </form>
+    </div>
+
+    <div class = "record-container">
+        <div class = "img-magnifier-container">
+            <img src = "../img/nimma-artwork.png" alt = "vinyl_record" id = "record-img">
+        </div>
+        <div class = "record-info">
+            <span class = "info" id = "artist-name">Vot'e</span>
+            <br>
+            <br>
+            <span class = "info" id = "album-name">Hammersmith Flyover</span>
+            <br>
+            <br>
+            <span class = "info" id = "label-name">miNIMMAl movement [NIMMA008]</span>
+            <br>
+            <br>
+            <span class = "info">Genre/s: </span>
+            <a href = "#genre" class = "genre-name" id = "genre">Techno</a>
+            <a href = "#genre" class = "genre-name" id = "genre">Minimal</a>
+            <br>
+            <br>
+            <qpan class = "info" id = "price-tag"><del>100 Ron</del>  80 Ron</span>
+        </div>
+
+        <div class = "audio-container">
+            <audio controls loop autoplay>
+                <source src = "../audio_clips/audio_test.mp3" type = "audio/mpeg">
+                Your browser does not support audio.
+            </audio>
+        </div>
+        
+        <div class = "checkout-container">
+            <button href = "#wishlist" class = "checkout-btn" id = "wishlist-btn">
+                <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
+                Add to Wishlist 
+            </button>
+            <button href = "#buy" class = "checkout-btn" id = "buy-btn">
+                <img src = "../img/shopping-cart.png" alt = "wishlist_img">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+    <footer class = "botnav">
+        <div class = "botnav-items">
+            <a href = "#about">About</a>
+            <a href = "#shipping">Shipping</a>
+            <a href = "#terms">Terms</a>
+            <a href = "#contact">Contact</a>
+            <a href = "#cookie">Cookie Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        magnify(2);
+    </script>
+</body>
+</html>
