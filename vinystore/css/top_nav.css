@@ -1,0 +1,84 @@
+body{
+    margin: 0px;
+}
+
+.topnav{
+    background-color: #f2f2f2;
+    overflow: hidden;
+    z-index: 999;
+    border: 1.5px solid #d9d9d9;
+    border-radius: 2px;
+    width: 100%;
+    position: fixed;
+    top: -3px;
+}
+
+.topnav-menu{
+    position: relative;
+    right: 100px;
+}
+
+.topnav .topnav-logo{
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 0px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-family: Raleway, 'sans-serif';
+    position: relative;
+    left: 100px;
+}
+
+.topnav .topnav-logo-img{
+    float: left;
+    padding: 15px 20px;
+    width: 40px;
+    position: relative;
+}
+
+.topnav .topnav-logo-btn{
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    text-decoration: bold;
+    padding: 1px 8px;
+}
+.topnav .topnav-menu-item{
+    float: right;
+    color: black;
+    text-align: center;
+    padding: 10px 0px 10px 25px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-family: Raleway, 'sans-serif';
+}
+
+.topnav .topnav-menu-btn{
+    position: relative;
+    top: 100%;
+    display: inline-block;
+    left: 25%;
+    padding: 1px 8px;
+}
+
+.topnav .topnav-menu-img{
+    float: right;
+    padding: 15px 20px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    right: 65%;
+}
+
+.topnav .topnav-menu-btn:hover, .topnav .topnav-logo-btn:hover{
+    color:  #cc9966;
+}
+
+.topnav .topnav-menu-btn:active, .topnav .topnav-logo-btn:active{
+    color:  #261a0d;
+}
+
