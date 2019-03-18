@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping-cart</title>
+    <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/shopping_cart.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+    <nav class ="topnav">
+        <a href = "./index.html" class = "topnav-logo">
+            <img src = "../img/logo.png" alt = "logo_img" class = "topnav-logo-img">
+            <h4 class = "topnav-logo-btn">Home</h4>
+        </a>
+        <div class = "topnav-menu">
+            <a  href ="./shopping-cart.html" class = "topnav-menu-item">
+                <img src = "../img/shopping-cart.png" alt = "cart_img" class = "topnav-menu-img">
+                <h4 class = "topnav-menu-btn">Cart</h4>
+            </a>
+            <a href ="./my-account.html" class = "topnav-menu-item">
+                <img src = "../img/account-user.png" alt = "account_img" class = "topnav-menu-img">
+                <h4 class = "topnav-menu-btn">Account</h4>
+            </a>    
+            <a href = "./wishlist.html" class = "topnav-menu-item">
+                <img src = "../img/wishlist-heart.png" alt = "wishlist_img" class = "topnav-menu-img">
+                <h4 class = "topnav-menu-btn">Wishlist</h4>
+            </a>
+        </div>   
+        </nav>
+    
+        <div class = "filter-container">
+            <ul class = "genre-menu">
+                <li>    <span class = "genre-menu-span">Genres</span>   </li>
+                <li>    <a href = "#" class = "genre-menu-item">House</a>   </li>
+                <li>    <a href = "#" class = "genre-menu-item">Techno</a>  </li>
+                <li>    <a href = "#" class = "genre-menu-item">Hip Hop</a> </li>
+                <li>    <a href = "#" class = "genre-menu-item">Classic</a> </li>
+            </ul>
+            <hr>
+            <ul class = "collection-menu">
+                <li>    <span class = "collection-menu-span">Collection</span>  </li>
+                <li>    <a href = "#" class = "collection-menu-item" id = "on-sale">On Sale</a>  </li>
+                <li>    <a href = "#" class = "collection-menu-item">Artists</a> </li>
+                <li>    <a href = "#" class = "collection-menu-item">Labels</a>    </li>
+                <li>    <a href = "#" class = "collection-menu-item">New</a>    </li>
+            </ul>
+            <hr>
+            <form class = "form-search">
+                <a class = "search-btn">
+                    <img src = "../img/search.png" alt = "search_img" class = "search-img">
+                </a>
+                <input type = "text" class = "search-input" id = "search" placeholder="Search...">
+                <h3>VinyStore: Buy, Sell, Exchange</h3>
+            </form>
+        </div>
+        
+        <div class = "cart-container">
+            <h3>Your cart: </h3>
+            <table class = "cart-table">
+                <tr>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Label</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>Vot'e</td>
+                    <td><a href = "./record.html">Hammersmith Flyover</a></td>
+                    <td>miNIMMAl movement [NIMMA008]</td>
+                    <td>Techno, Minimal</td>
+                    <td>80 Ron</td>
+                </tr>
+                <tr>
+                    <td>Vot'e</td>
+                    <td><a href = "./record.html">Hammersmith Flyover</a></td>
+                    <td>miNIMMAl movement [NIMMA008]</td>
+                    <td>Techno, Minimal</td>
+                    <td>80 Ron</td>
+                </tr>
+                <tr>
+                    <td>Vot'e</td>
+                    <td><a href = "./record.html">Hammersmith Flyover</a></td>
+                    <td>miNIMMAl movement [NIMMA008]</td>
+                    <td>Techno, Minimal</td>
+                    <td>80 Ron</td>
+                </tr>
+            </table>
+        </div>
+
+        <footer class = "botnav">
+            <div class = "botnav-items">
+                <a href = "#about">About</a>
+                <a href = "#shipping">Shipping</a>
+                <a href = "#terms">Terms</a>
+                <a href = "#contact">Contact</a>
+                <a href = "#cookie">Cookie Policy</a>
+            </div>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+body{
+    font-family: Raleway, 'sans-serif';
+}
+
+.wish-container{
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    position: relative;
+    top: 25px;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    margin: 7%;
+}
+
+.wish-table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wish-table th, .wish-table td{
+    text-align: left;
+    padding: 10px;
+}
+
+.wish-table tr{
+    border: 1px solid black;
+}
+
+.wish-table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.wish-table td a{
+    text-decoration: none;
+    color: black;
+}
+
+.wish-table td a:hover{
+    color: #bf8040;
+}
+
+.wish-table td a:active{
+    color: black;
+}
