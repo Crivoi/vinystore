@@ -1,0 +1,39 @@
+body{
+    background-color: #ffffff;
+    font-family: Raleway, 'sans-serif';
+    text-decoration: none;
+    color: black;
+}
+.profile-image{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+}
+.person-information{
+    display:inline-block;
+    text-align: left;
+    margin-left:5%;
+}
+
+.profile {
+    width: 1200px;
+    margin: 120px auto 120px;
+    background-color: #fff;
+    padding: 0px 20px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.075);
+  }
+
+ .person-name{
+    font-size: 32px;
+    font-weight: 600px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .person-details{
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 20px;
+    color: #666;
+  }

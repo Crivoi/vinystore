@@ -1,0 +1,27 @@
+body{
+    background-color: #ffffff;
+    font-family: Raleway, 'sans-serif';
+    text-decoration: none;
+    color: black;
+}
+
+.artist-list{
+    display:inline-block;
+    margin-left:3%;
+    margin-right:3%;
+    text-decoration: none;
+}
+
+.artist-list-container{
+    position:relative;
+    text-align: left;
+    margin-top:10%;
+    margin-left:15%;
+    margin-right:15%;
+    margin-bottom:5%;
+}
+
+p:hover{
+    text-decoration: underline;
+}
+
