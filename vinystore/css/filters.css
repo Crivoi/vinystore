@@ -83,3 +83,21 @@ body{
     position: relative;
     bottom: 15px;
 }
+
+@media screen and (max-width: 650px){
+    *{
+        font-size: 12px;
+    }
+    .genre-menu-item, .collection-menu-item{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 940px){
+    .form-search h3, .filter-container .search-img{
+        display: none;
+    }
+    .filter-container .search-input{
+        width: 100%;
+    }
+}

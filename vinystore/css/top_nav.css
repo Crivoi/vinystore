@@ -82,15 +82,15 @@ body{
     color:  #261a0d;
 }
 
-@media screen and (max-width: 820px){
+@media screen and (max-width: 850px){
     .topnav .topnav-logo-btn, .topnav .topnav-menu-btn{
         display: none;
     }
 }
 
-@media screen and (max-width: 420){
+@media screen and (max-width: 420px){
     .topnav .topnav-menu-img{
-        right: 0px;
-        display: none;
+        right: 10px;
+        display: block;
     }
 }
