@@ -3,6 +3,7 @@ body{
     font-family: Raleway, 'sans-serif';
     text-decoration: none;
     color: black;
+    overflow-x: hidden;
 }
 
 .record-container{
