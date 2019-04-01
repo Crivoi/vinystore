@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wishlist</title>
+    <title>VinyStore Record</title>
+    <link rel = "stylesheet" type = "text/css" href = "../css/add_record.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/wishlist.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
@@ -36,7 +36,7 @@
             </a>
         </div>   
     </nav>
-    
+
     <div class = "filter-container">
         <ul class = "genre-menu">
             <li>    <span class = "genre-menu-span">Genres</span>   </li>
@@ -62,39 +62,46 @@
             <h3>VinyStore: Buy, Sell, Exchange</h3>
         </form>
     </div>
-    
-    <div class = "wish-container">
-        <h3>Your wishlist: </h3>
-        <table class = "wish-table">
-            <tr>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Label</th>
-                <th>Genre</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-        </table>
+
+    <div class = "add-container">
+        <form action = "./record.html" method = "POST" class = "add-form">
+            <h2>Insert Record Information: </h2>
+            <div class = "form-item">
+                <label for = "artist">Artist: </label>
+                <input id = "artist" placeholder = "artist/s" type = "text" name = "artist">
+            </div>
+            <div class = "form-item">
+                <label for = "release">Album: </label>
+                <input id = "release" placeholder = "release" type = "text" name = "release">
+            </div>
+            <div class = "form-item">
+                <label for = "label">Label: </label>
+                <input id = "label" placeholder = "label" type = "text" name = "label">
+            </div>
+            <div class = "form-item">
+                <label for = "cat">Catalogue: </label>
+                <input id = "cat" placeholder = "catalogue" type = "text" name = "cat">
+            </div>
+            <div class = "form-item">
+                <label for = "genre">Genre/s: </label>
+                <input id = "genre" placeholder = "genre/s" type = "text" name = "genre">
+            </div>
+            <div class = "form-item">
+                <label for = "cover">Upload cover art: </label>
+                <input id = "cover" type = "file" name = "cover" accept = "image/*">
+                <label for = "cover" id = "cover-label">
+                    <div class = "cover-div">
+                        <!-- <img src = "../img/upload.png" alt = "upload"> -->
+                        Choose cover-art image
+                        <!-- <img src = "../img/upload.png" alt = "upload"> -->
+                    </div>
+                </label>
+
+            </div>
+            <div class = "form-item" id = "form-submit">
+                <input id = "sub" type = "submit" name = "sub">
+            </div>
+        </form>
     </div>
 
     <footer class = "botnav">

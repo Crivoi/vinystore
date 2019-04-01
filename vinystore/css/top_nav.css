@@ -45,11 +45,12 @@ body{
     text-decoration: bold;
     padding: 1px 8px;
 }
+
 .topnav .topnav-menu-item{
     float: right;
     color: black;
     text-align: center;
-    padding: 10px 0px 10px 25px;
+    padding: 10px 0px 10px;
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
