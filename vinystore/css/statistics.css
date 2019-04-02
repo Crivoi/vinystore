@@ -1,0 +1,41 @@
+.stats-container{
+    border-radius: 10px;
+    margin: 10px 5% 5%;
+    position: relative;
+    padding: 10px 50px 25px 30px;
+    top: 100px;
+    text-align: left;
+}
+
+.stat-item p, .stat-item select{
+    border-left: 1px solid #c2c2c2;
+    padding: 10px 1%;
+    margin: 10px 2%;
+    font-size: 20px;
+    font-family: Raleway;
+}
+
+.stat-item select{
+    border-radius: 3%;
+}
+
+.stat-item .exp-btn{
+    display: inline;
+    position: relative;
+    padding: 10px;
+    margin: 10px 2%;
+    font-size: 15px;
+    font-family: Raleway;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #cccccc;
+    margin-right: 1px;
+}
+
+.exp-btn:hover{
+    background-color: #bf8040;
+}
+
+.exp-btn:active{
+    background-color: #cccccc;
+}

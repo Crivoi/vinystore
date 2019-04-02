@@ -108,7 +108,7 @@ body{
     bottom: 425px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 2px 2px;
+    /* box-shadow: 2px 2px; */
     font-size: 15px;
     /* float: right;
     right: 675px; */
@@ -133,7 +133,6 @@ body{
 
 .checkout-btn:active{
     background-color: #cccccc;
-    border: none;
 }
 
 .audio-container audio{
@@ -143,7 +142,7 @@ body{
     bottom: 420px;
     position: relative;
     left: 37%;
-    box-shadow: 2px 2px #261a0d;
+    /* box-shadow: 2px 2px #261a0d; */
 }
 
 @media screen and (max-width: 1220px){

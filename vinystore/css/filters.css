@@ -65,7 +65,7 @@ body{
     border: 1px solid black;
     padding: 5px;
     font-style: italic;
-    box-shadow: 2px 2px #261a0d;
+    /* box-shadow: 2px 2px #261a0d; */
     width: 350px;
 }
 
