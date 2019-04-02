@@ -62,3 +62,9 @@
 .cover-div:hover{
     cursor: pointer;
 }
+
+.form-item #condition{
+    font-family: Raleway;
+    color: black;
+    padding: 3px;
+}

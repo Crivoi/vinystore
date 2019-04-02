@@ -64,7 +64,7 @@
     </div>
 
     <div class = "add-container">
-        <form action = "./record.html" method = "POST" class = "add-form">
+        <form action = "./record.html" method = "POST" class = "add-form" id = "form-id">
             <h2>Insert Record Information: </h2>
             <div class = "form-item">
                 <label for = "artist">Artist: </label>
@@ -87,6 +87,17 @@
                 <input id = "genre" placeholder = "genre/s" type = "text" name = "genre">
             </div>
             <div class = "form-item">
+                <label>Record Condition: </label>
+                <!-- <input id = "quality" type = "select" name = "quality"> -->
+                <select form = "form-id" id = "condition">
+                    <option value = "M">Mint</option>
+                    <option value = "NM">Near Mint</option>
+                    <option value = "VG">Very Good</option>
+                    <option value = "G">Good</option>
+                    <option value = "P">Poor</option>
+                </select>
+            </div>
+            <div class = "form-item">
                 <label for = "cover">Upload cover art: </label>
                 <input id = "cover" type = "file" name = "cover" accept = "image/*">
                 <label for = "cover" id = "cover-label">
@@ -96,7 +107,6 @@
                         <!-- <img src = "../img/upload.png" alt = "upload"> -->
                     </div>
                 </label>
-
             </div>
             <div class = "form-item" id = "form-submit">
                 <input id = "sub" type = "submit" name = "sub">
@@ -111,6 +121,7 @@
             <a href = "./terms.html">Terms</a>
             <a href = "./contact.html">Contact</a>
             <a href = "./cookie_policy.html">Cookie Policy</a>
+            <a href = "./statistics.html">Statistics</a>
         </div>
     </footer>
 </body>
