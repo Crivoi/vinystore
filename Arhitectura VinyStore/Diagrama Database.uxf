@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>160</y>
+      <w>210</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Utilizatori
+--
+username=varchar(30)
+password=varchar(30)
+email=varchar(50)
+id_user=varchar(30)
+profile_photo_link=varchar(50)
+profile_name=varchar(50)
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>160</y>
+      <w>210</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Comenzi plasate
+--
+id_utilizator_comandata=Integer
+id_produs=Integer
+data_plasare=Date
+id_comanda=Integer
+nume_cumparator=varchar(30)
+adresa_cumparator=varchar(30)
+telefon_cumparator=varchar(30)
+cantitate_produs=varchar(30)
+pret_comanda
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>160</y>
+      <w>210</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Vinyluri
+--
+id_user=varchar(30)
+id_vinyl=varchar(30)
+nume_vinyl=varchar(30)
+data_adaugare_vinyl=date
+gen_muzical_vinyl=varchar(30)
+link_sample_vinyl=varchar(30)
+link_photo_vinyl=varchar(30)
+detalii_vinyl=varchar(150)
+pret=Integer
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>210</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-&gt;&gt;&gt;
+id_user=id_utilizator_comanda</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>220</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-&gt;&gt;&gt;
+id_user=id_user</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+</diagram>
