@@ -84,20 +84,33 @@ body{
     bottom: 15px;
 }
 
-@media screen and (max-width: 650px){
-    *{
-        font-size: 12px;
-    }
+
+@media screen and (max-width: 940px){
     .genre-menu-item, .collection-menu-item{
         display: block;
     }
-}
 
-@media screen and (max-width: 940px){
+    .form-search, .genre-menu-item, .collection-menu-item, .collection-menu-span, .genre-menu{
+        font-size: 13px;
+    }
     .form-search h3, .filter-container .search-img{
         display: none;
     }
     .filter-container .search-input{
         width: 100%;
+    }
+
+    .filter-container{
+        /* background-color: #cccccc; */
+        position: relative;
+        padding: 0px 0px;
+        top: 75px;
+        border-bottom: 2px solid #cccccc;
+    }
+
+    .filter-container li, .filter-container li{
+        display: inline-block;
+        position: relative;
+        padding: 2px 2px;
     }
 }

@@ -152,22 +152,44 @@ body{
     left: -50px;
 }
 
-@media screen and (max-width: 850px){
-    .content-item img{
-        display: none;
+@media screen and (max-width: 940px){
+
+    .record-container{
+        float: right;
+        background-color: white;
+        z-index: 901;
+        position: relative;
+        display: inline-block;
+        margin: 0px;
+        border: 0px solid #cccccc;
+        border-radius: 10px;
     }
 
-    .content-item .content-info{
-        display: block;
-        font-size: 12px;
+    .content-item{
+        position: relative;
+        display: inline-block;
     }
-}
 
-@media screen and (max-width: 530px){
-    .left-arrow, .right-arrow{
-        display: none;
+    .content-item{
+        position: relative;
+        display: inline-block;
+        left: 17%;
+        width:70%;
+    }    
+
+    .right-arrow, .left-arrow{
+        display:none;
     }
-    .pagination a{
-        font-size: 10px;
+    
+    .pagination{
+        position: relative;
+        bottom: 40px;
+        margin-right:5%;
     }
+    
+    .content-container{
+        padding: 10px 30px;
+    }
+
+
 }

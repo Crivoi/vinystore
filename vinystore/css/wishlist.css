@@ -42,3 +42,9 @@ body{
 .wish-table td a:active{
     color: black;
 }
+
+@media screen and (max-width: 940px){
+    .wish-container{
+        overflow-x:auto;
+    }
+}

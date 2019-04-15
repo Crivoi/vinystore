@@ -107,3 +107,14 @@ body{
 .sign-up-button:hover{
     background-color: #666666;
 }
+
+@media screen and (max-width: 940px){
+    .card{ 
+        position:absolute;
+        margin:auto;
+        position: initial;
+        margin-top: 25%;
+        left: initial;
+        width:  250px;
+     }
+}

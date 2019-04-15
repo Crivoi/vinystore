@@ -39,3 +39,9 @@
 .exp-btn:active{
     background-color: #cccccc;
 }
+
+@media screen and (max-width: 940px){
+    .stats-container{
+        margin-bottom:25%;
+    }
+}

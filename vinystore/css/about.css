@@ -15,3 +15,14 @@
     margin-right:15%;
     font-family: Raleway, 'sans-serif';
 }
+
+@media screen and (max-width: 940px){
+    .about-title{
+        margin-top:20%;
+    }
+
+    .about-text{
+        font-size:20px;
+        margin-bottom:25%;
+    }
+}

@@ -69,3 +69,19 @@
     padding: 3px;
     border-radius: 3%;
 }
+
+@media screen and (max-width: 940px){
+    .add-container{
+    margin:0px;/*daca pun margin inainte de margin-top*/
+    margin-bottom:25%;/*inainte de margin se vede dubios tare*/
+    padding: 10px 20px 25px 30px;
+    }
+
+    .form-item{
+        border-left: 1px solid #c2c2c2;
+        padding: 15px 1%;
+        margin:0px;
+        font-size: 20px;
+    }
+
+}

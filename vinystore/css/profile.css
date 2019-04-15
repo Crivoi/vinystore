@@ -37,3 +37,19 @@ body{
     margin-bottom: 20px;
     color: #666;
   }
+
+  @media screen and (max-width: 940px){
+    .profile {
+      width: 90%;
+    }
+    
+    .person-name,.person-information{
+      text-align:center;
+    }
+
+    .profile-image{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}

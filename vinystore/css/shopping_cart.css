@@ -42,3 +42,10 @@ body{
 .cart-table td a:active{
     color: black;
 }
+
+@media screen and (max-width: 940px){
+
+    .cart-container{
+    overflow-x:auto;
+    }
+}
