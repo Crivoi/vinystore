@@ -14,7 +14,7 @@
     font-size: 20px;
 }
 
-#form-submit input{
+#form-submit button{
     padding: 10px 10%;
     background-color: #d9d9d9;
     border: 1px solid #cccccc;
@@ -36,18 +36,6 @@
 
 #form-submit input:hover{
     background-color: #cc9966;
-}
-
-#cover{
-    display: none
-}
-
-#cover-label{
-    font-family: Raleway;
-}
-
-#cover-label img{
-    width: 15px;
 }
 
 .cover-div{

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VinyStore Record</title>
     <link rel = "stylesheet" type = "text/css" href = "../css/record.css">
+    <!-- <link href="../css/record.css?<?=filemtime("../css/record.css")?>" rel="stylesheet" type="text/css"> -->
     <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
@@ -20,55 +21,49 @@
         include_once './filters.php';
     ?>
 
-    <div class = "record-container">
-        <div class = "img-magnifier-container">
-            <img src = "../img/nimma-artwork.png" alt = "vinyl_record" id = "record-img">
-        </div>
-        <div class = "record-info">
-            <span class = "info" id = "artist-name">Vot'e</span>
-            <br>
-            <br>
-            <span class = "info" id = "album-name">Hammersmith Flyover</span>
-            <br>
-            <br>
-            <span class = "info" id = "label-name">miNIMMAl movement [NIMMA008]</span>
-            <br>
-            <br>
-            <span class = "info">Genre/s: </span>
-            <a href = "#genre" class = "genre-name">Techno</a>
-            <a href = "#genre" class = "genre-name">Minimal</a>
-            <br>
-            <br>
-            <span class = "info" id = "price-tag"><del>100 Ron</del>  80 Ron</span>
-            <br>
-            <br>
-            <span class = "info" id = "condition">Mint</span>
-            <br>
-            <br>
-            <span class = "info" id = "added-by">Andrei Popescu</span>
-        </div>
+    <?php 
+        include_once 'app.model.php';
 
-        <div class = "audio-container">
-            <audio controls loop autoplay>
-                <source src = "../audio_clips/A_Vot'e_-_Hammersmith_Flyover_snippet.flac" type = "audio/flac">
-                Your browser does not support audio.
-            </audio>
-        </div>
-        
-        <div class = "checkout-container">
-            <button class = "checkout-btn" id = "wishlist-btn">
-                <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
-                Add to Wishlist 
-            </button>
-            <button class = "checkout-btn" id = "buy-btn">
-                <img src = "../img/shopping-cart.png" alt = "wishlist_img">
-                Add to Cart
-            </button>
-        </div>
-    </div>
+        $endpoint = $_SERVER['REQUEST_URI'];
+        $method = $_SERVER['REQUEST_METHOD'];
+        $payload = file_get_contents('php://input');
 
-    <script>
+        if(preg_match('/^\/records\/([1-9]*)$/', $endpoint, $id)){
+
+            $record = get_record_by_id($id[1]);
+            $recordInfo = [];
+
+            foreach($record as $rec){
+                $recordInfo = [
+                    "id" => $id[1],
+                    "artist" => $rec['artist'],
+                    "album" => $rec['album'],
+                    "label" => $rec['label'],
+                    "cat" => $rec['catalogue'],
+                    "genre" => $rec['genre'],
+                    "cond" => $rec['cond']
+                ];
+            }
+            display_record($recordInfo);
+        }
+
+        if(isset($_POST['submit'])){
+            switch($_POST['submit']){
+                case 'wishlist':
+                    //add_to_wishlist($id);
+                    echo '<p>Added to wishlist.</p>';
+                    break;
+                case 'buy':
+                    //add_to_cart($id);
+                    echo '<p>Added to cart.</p>';
+                    break;
+            }
+        }
+    ?>
+
+    <script>    
         magnify(2);
     </script>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^php/.*$ ./index.php [NC,L]
+RewriteRule ^records/[1-9]*$ ./record.php [NC,L]

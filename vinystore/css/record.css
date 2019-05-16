@@ -118,7 +118,15 @@ body{
 }
 
 #wishlist-btn{
-    left: 47%;
+    left: 45%;
+}
+
+#buy-btn.checkout-btn{
+    left: 25%;
+}
+
+.checkout-container form{
+    display: inline;
 }
 
 .checkout-btn img{
