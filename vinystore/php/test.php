@@ -10,19 +10,15 @@
     <form action = './test.php' method = GET>
         <button type = "submit" value = "get_id">GET RECORD INFO</button>
     </form>
-
-    <!-- <form action = './test.php' method = POST>
-        <button type = "submit" value = "post">POST</button>
-    </form> -->
-
+    
     <?php 
         include_once './app.model.php';
 
-        $record = get_record_by_id(5);
-        // echo $record->artist;
-
-        foreach($record as $rec){
-            echo $rec['album'];
+        $files = glob("../img/records/*.{jpg,gif,png,PNG,BMP}", GLOB_BRACE);
+        echo $files;
+        
+        foreach($files as $file){
+            echo '<p>'.$file.'</p><br>';
         }
     ?>
 </body>

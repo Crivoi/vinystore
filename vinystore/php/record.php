@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VinyStore Record</title>
     <link rel = "stylesheet" type = "text/css" href = "../css/record.css">
-    <!-- <link href="../css/record.css?<?=filemtime("../css/record.css")?>" rel="stylesheet" type="text/css"> -->
     <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
@@ -26,12 +25,16 @@
 
         $endpoint = $_SERVER['REQUEST_URI'];
         $method = $_SERVER['REQUEST_METHOD'];
-        $payload = file_get_contents('php://input');
+        //$payload = file_get_contents('php://input');
 
-        if(preg_match('/^\/records\/([1-9]*)$/', $endpoint, $id)){
+        if(preg_match('/^\/records\/([0-9]*)$/', $endpoint, $id)){
 
             $record = get_record_by_id($id[1]);
             $recordInfo = [];
+
+            // if(empty($record)){
+            //     header("HTTP/1.1 404 NOT FOUND");
+            // }
 
             foreach($record as $rec){
                 $recordInfo = [
@@ -41,7 +44,8 @@
                     "label" => $rec['label'],
                     "cat" => $rec['catalogue'],
                     "genre" => $rec['genre'],
-                    "cond" => $rec['cond']
+                    "cond" => $rec['cond'],
+                    "price" => $rec['price']
                 ];
             }
             display_record($recordInfo);

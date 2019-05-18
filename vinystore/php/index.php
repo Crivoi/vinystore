@@ -26,21 +26,15 @@
             </a> -->
             <?php 
                 ini_set('user_agent', $_SERVER['HTTP_USER_AGENT']);
-                session_start();
-                $_SESSION['page'] = 1;
                 $per_page = 13;
                 
-                if(isset($_POST['next'])){
-                    $_SESSION['page'] = $_SESSION['page'] + 1;
-                }
-                
-                $rls_url = "https://api.discogs.com/artists/1/releases?page=". urlencode($_SESSION['page']) ."&per_page=". urlencode($per_page);
+                $rls_url = "https://api.discogs.com/artists/1/releases?page=\"1\"&per_page=". urlencode($per_page);
 
                 $rls_json = file_get_contents($rls_url);
                 $rls_array = json_decode($rls_json, true);
 
                 foreach($rls_array['releases'] as $rls){
-                    echo "<a href = \"./record.php\" class = \"content-item\">";
+                    echo "<a href = \"/records/".$rls['id']."\" class = \"content-item\">";
                     echo "<img src = \"../img/vinyl-record.jpg\" alt = \"vinyl_img\" class = \"content-img\">";
                     echo "<p class = \"content-info\">". $rls['artist'] ." - ". $rls['title'] ."</p>";
                     echo "</a>";

@@ -14,12 +14,12 @@
     }
 
     // add record to database
-    function add_record($artist, $album, $label, $cat, $genre, $condition){
+    function add_record($artist, $album, $label, $cat, $genre, $condition, $price){
         GLOBAL $conn;
 
         $date = date('y-m-d');
-        $insertInfo = $conn->prepare("INSERT INTO records (artist, album, label, catalogue, genre, cond, date_added) VALUES(?, ?, ?, ?, ?, ?, ?)");
-        $insertInfo->bind_param("sssssss", $artist, $album, $label, $cat, $genre, $condition, $date);
+        $insertInfo = $conn->prepare("INSERT INTO records (artist, album, label, catalogue, genre, cond, price, date_added) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertInfo->bind_param("ssssssss", $artist, $album, $label, $cat, $genre, $condition, $price, $date);
 
         $insertInfo->execute();
         $insertInfo->close();
@@ -86,11 +86,44 @@
         return 0;
     }
 
+    function cut_path($path){
+        $i = 2;
+        $copy = '';
+        while($path[$i] != '.'){
+            $copy[$i - 2] = $path[$i];
+            $i += 1;
+        }
+        return $copy;
+    }
+
     // display a record from an array 
     function display_record($record){
+
+        $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP}", GLOB_BRACE);
+        $aud_files = glob("../audio_clips/previews/*.{mp3,flac,wav,aif,aiff}", GLOB_BRACE);
+
+        $img_path = "/img/records/".$record['id'];
+
+        foreach($img_files as $img){
+            // echo '<p>'.cut_path($img).'</p>';
+            if($img_path === cut_path($img)){
+                $img_path = $img;
+                break;
+            }
+        }
+
+        $aud_path = "/audio_clips/previews/".$record['id'];
+
+        foreach($aud_files as $aud){
+            if($aud_path === cut_path($aud)){
+                $aud_path = $aud;
+                break;
+            }
+        }
+
         echo '<div class = "record-container">';
         echo '<div class = "img-magnifier-container">';
-        echo '<img src="../img/nimma-artwork.png" alt="vinyl-record" id="record-img">';
+        echo '<img src="'. $img_path .'" alt="vinyl-record" id="record-img">';
         echo '</div>';
         
         echo '<div class="record-info">';
@@ -105,19 +138,19 @@
 
         echo '<div class = "audio-container">
             <audio controls loop>
-                <source src = "../audio_clips/A_Vot\'e_-_Hammersmith_Flyover_snippet.flac" type = "audio/flac">
+                <source src = "'. $aud_path .'" type = "audio/flac">
                 Your browser does not support audio.
             </audio>
         </div>';
 
         echo '<div class = "checkout-container">
-            <form action = "/" method = "POST">
+            <form action = "/php/wishlist.php" method = "POST">
                 <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
                     <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
                     Add to Wishlist 
                 </button>
             </form>
-            <form action = "." method = "POST">
+            <form action = "/php/shopping_cart.php" method = "POST">
                 <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "buy">
                     <img src = "../img/shopping-cart.png" alt = "wishlist_img">
                     Add to Cart

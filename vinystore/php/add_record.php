@@ -52,6 +52,10 @@
                 </select>
             </div>
             <div class = "form-item">
+                <label for = "price">Price: </label>
+                <input id = "price" placeholder = "price" type = "number" name = "price" value = "100">
+            </div>
+            <div class = "form-item">
                 <label for = "cover">Upload cover art: </label>
                 <input id = "cover" type = "file" name = "cover" accept = "image/*" hidden>
                 <label for = "cover" id = "cover-label">
@@ -84,9 +88,9 @@
                 !empty($_POST['label']) &&
                 !empty($_POST['cat']) &&
                 !empty($_POST['genre']) &&
-                !empty($_POST['condition'])){
-
-                add_record($_POST['artist'], $_POST['release'], $_POST['label'], $_POST['cat'], $_POST['genre'], $_POST['condition']);
+                !empty($_POST['condition']) &&
+                !empty($_POST['price'])){
+                    add_record($_POST['artist'], $_POST['release'], $_POST['label'], $_POST['cat'], $_POST['genre'], $_POST['condition'],  $_POST['price']);
             }
             else{
                 echo "<br><br><h2>Please fill in all the information needed!</h2>";
