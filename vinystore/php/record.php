@@ -15,16 +15,14 @@
 <body>
     
     <?php 
-        include_once './top_nav.php';
-        include_once './bot_nav.php';
-        include_once './filters.php';
-    ?>
+        include_once 'top_nav.php';
+        include_once 'bot_nav.php';
+        include_once 'filters.php';
 
-    <?php 
         include_once 'app.model.php';
 
         $endpoint = $_SERVER['REQUEST_URI'];
-        $method = $_SERVER['REQUEST_METHOD'];
+        // $method = $_SERVER['REQUEST_METHOD'];
         //$payload = file_get_contents('php://input');
 
         if(preg_match('/^\/records\/([0-9]*)$/', $endpoint, $id)){
@@ -32,13 +30,9 @@
             $record = get_record_by_id($id[1]);
             $recordInfo = [];
 
-            // if(empty($record)){
-            //     header("HTTP/1.1 404 NOT FOUND");
-            // }
-
             foreach($record as $rec){
                 $recordInfo = [
-                    "id" => $id[1],
+                    "id_user" => $id[1],
                     "artist" => $rec['artist'],
                     "album" => $rec['album'],
                     "label" => $rec['label'],

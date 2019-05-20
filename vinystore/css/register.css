@@ -1,6 +1,6 @@
 body{
     font-family: Raleway, 'sans-serif';
-    background-image: url('../img/vinyl-background.gif');;
+    /* background-image: url('../img/vinyl-background.gif'); */
     background-size: cover;
     height: 100vh;
     padding:0;

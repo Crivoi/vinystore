@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2019 at 03:31 PM
+-- Generation Time: May 20, 2019 at 04:17 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -30,12 +30,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `records` (
   `id_record` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `artist` varchar(20) NOT NULL,
   `album` varchar(20) NOT NULL,
   `label` varchar(20) NOT NULL,
   `catalogue` varchar(8) NOT NULL,
   `genre` varchar(100) NOT NULL,
   `cond` varchar(10) NOT NULL,
+  `price` int(11) NOT NULL,
   `date_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,12 +45,40 @@ CREATE TABLE `records` (
 -- Dumping data for table `records`
 --
 
-INSERT INTO `records` (`id_record`, `artist`, `album`, `label`, `catalogue`, `genre`, `cond`, `date_added`) VALUES
-(1, 'A1', 'A1', 'L1', 'C01', 'HOUSE', 'M', '2019-05-16'),
-(3, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', '2019-05-16'),
-(4, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', '2019-05-16'),
-(5, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', '2019-05-16'),
-(7, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', '2019-05-16');
+INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `catalogue`, `genre`, `cond`, `price`, `date_added`) VALUES
+(1, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
+(2, 0, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST001', 'TECHNO', 'VG', 120, '2019-05-18'),
+(3, 0, 'ARTIST_TEST_3', 'ALBUM_TEST_3', 'LABEL_TEST_3', 'TEST003', 'HOUSE', 'M', 100, '2019-05-18'),
+(4, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
+(5, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
+(6, 0, 'ARTIST_TEST_6', 'ALBUM_TEST_6', 'LABEL_TEST_6', 'TEST001', 'HOUSE', 'M', 120, '2019-05-18'),
+(7, 1, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST002', 'HOUSE', 'M', 120, '2019-05-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `age` int(11) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `postal_code` varchar(10) NOT NULL,
+  `phone_nr` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `first_name`, `last_name`, `age`, `address`, `postal_code`, `phone_nr`) VALUES
+(1, 'user1', 'pass1', 'email_test@test.com', 'first', 'last', 20, 'str. garii', '100100', '+40723456789');
 
 --
 -- Indexes for dumped tables
@@ -62,6 +92,12 @@ ALTER TABLE `records`
   ADD KEY `id_record` (`id_record`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -70,6 +106,12 @@ ALTER TABLE `records`
 --
 ALTER TABLE `records`
   MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

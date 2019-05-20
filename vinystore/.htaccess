@@ -2,6 +2,9 @@ RewriteEngine On
 RewriteBase /
 
 RewriteRule ^records/[0-9]+$ /php/record.php [NC,L]
+
 RewriteRule ^users/[0-9]+$ /php/profile.php [NC,L]
 RewriteRule ^users/[0-9]+/wishlist /php/wishlist.php [NC,L]
+RewriteRule ^users/[0-9]+/my_records$ /php/my_records.php [NC,L]
+
 RewriteRule ^artists/[0-9]*$ /php/artists_list.php [NC,L]
