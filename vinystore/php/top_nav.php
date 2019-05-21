@@ -1,5 +1,5 @@
 <nav class ="topnav" id = "top_nav">
-    <a href = "/php/index.php" class = "topnav-logo">
+    <a href = "/home" class = "topnav-logo">
         <img src = "/img/logo.png" alt = "logo_img" class = "topnav-logo-img">
         <h4 class = "topnav-logo-btn">Home</h4>
     </a>

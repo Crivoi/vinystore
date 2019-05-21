@@ -11,7 +11,7 @@
 <body>
     <div class="card">
             <h3 class="form-text">And now, put your data in this form to enter in the beautiful world of vinyls.🎇</h3>
-            <form class="form">
+            <form class="form" action = "">
                 <h2 id="username-title">Username:</h2>
                 <input type="text" name="username" placeholder="Username" class="username">
                 <h2 id="email-title">Email:</h2>

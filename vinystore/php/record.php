@@ -32,7 +32,7 @@
 
             foreach($record as $rec){
                 $recordInfo = [
-                    "id_user" => $id[1],
+                    "id_record" => $id[1],
                     "artist" => $rec['artist'],
                     "album" => $rec['album'],
                     "label" => $rec['label'],
@@ -42,7 +42,15 @@
                     "price" => $rec['price']
                 ];
             }
-            display_record($recordInfo);
+            if(!empty($recordInfo)){
+                display_record($recordInfo);
+            }
+            else{
+                http_response_code(404);
+                echo '<h2 style="position: absolute;
+                left: 30%;
+                top: 50%;">Oops! This item is not in our database!</h2>';
+            }
         }
 
         if(isset($_POST['submit'])){

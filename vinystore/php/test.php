@@ -1,12 +1,16 @@
 <?php 
-    include_once './app.model.php';
+    include_once 'app.model.php';
 
-    ini_set('user_agent', $_SERVER['HTTP_USER_AGENT']);
+    $records = get_all_records();
 
-    $response = api_call("https://api.discogs.com/releases/1", "GET");
+    $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
+    sort($img_files);
+    
+    echo $img_files[1].'<br>';
 
-    header('Content-Type: application/json');
-
-    echo json_encode($response);
-
+    foreach($records as $rec){
+        echo $rec['id_record'].'    '.
+        $rec['artist'].'    '.
+        $rec['album'].'<br>';
+    }
 ?>

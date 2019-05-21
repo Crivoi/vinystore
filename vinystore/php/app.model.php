@@ -24,8 +24,8 @@
         $insertInfo->execute();
         $insertInfo->close();
         
-        get_file('cover', "/img/records/");
-        get_file('preview', "/audio_clips/previews/");
+        get_file('cover', "../img/records/");
+        get_file('preview', "../audio_clips/previews/");
     }
 
     // get id of last record added 
@@ -68,11 +68,11 @@
             $path_filename_ext = $target_dir.$filename.".".$ext;
              
             if (file_exists($path_filename_ext)) {
-                echo "Sorry, file already exists.";
+                echo 'File already exists!';
             }
             else {
                 move_uploaded_file($temp_name,$path_filename_ext);
-                echo "<p>Congratulations! File Uploaded Successfully.</p>";
+                echo 'Upload success!';
             }
         }
     }
@@ -169,17 +169,19 @@
         $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
         $aud_files = glob("../audio_clips/previews/*.{mp3,flac,wav,aif,aiff}", GLOB_BRACE);
 
-        $img_path = "/img/records/".$record['id'];
+        $img_path_no_ext = "/img/records/".$record['id_record'];
+        $img_path = $img_path_no_ext;
 
         foreach($img_files as $img){
             // echo '<p>'.cut_path($img).'</p>';
-            if($img_path === cut_path($img)){
+            if($img_path_no_ext === cut_path($img)){
                 $img_path = $img;
                 break;
             }
         }
 
-        $aud_path = "/audio_clips/previews/".$record['id'];
+        $aud_path_no_ext = "/audio_clips/previews/".$record['id_record'];
+        $aud_path = $aud_path_no_ext;
 
         foreach($aud_files as $aud){
             if($aud_path === cut_path($aud)){
@@ -188,28 +190,39 @@
             }
         }
 
-        echo '<div class = "record-container">';
-        echo '<div class = "img-magnifier-container">';
-        echo '<img src="'. $img_path .'" alt="vinyl-record" id="record-img">';
-        echo '</div>';
-        
+        if($img_path_no_ext === $img_path){
+            echo '<div class = "record-container">';
+            echo '<div class = "img-magnifier-container">';
+            echo '<img src="/img/records/0.jpg" alt="vinyl-record" id="record-img">';
+            echo '</div>';
+        }
+        else{
+            echo '<div class = "record-container">';
+            echo '<div class = "img-magnifier-container">';
+            echo '<img src="'. $img_path .'" alt="vinyl-record" id="record-img">';
+            echo '</div>';
+        }
+
         echo '<div class="record-info">';
         echo '<span class="info" id="artist-name">'. $record['artist']. '</span><br><br>';
         echo '<span class="info" id="album-name">'. $record['album'] .'</span><br><br>';
         echo '<span class="info" id="label-name">'. $record['label'] .'</span><br><br>';
         echo '<span class="info">Genre: </span>';
         echo '<a href = "" class = "genre-name">'. $record['genre'] .'</a><br><br>';
-        echo '<span class="info" id="price-tag"><del>100 Ron</del>  80 Ron</span><br><br>';
+        echo '<span class="info" id="price-tag">'. $record['price'] .'🥇</span><br><br>';
         echo '<span class="info" id="condition">'. $record['cond'] .'</span>';
+        if($aud_path_no_ext === $aud_path){
+            echo '<br><br><span class="info">No Preview Available!</span>';
+        }
         echo '</div>';
 
         echo '<div class = "audio-container">
-                <audio controls loop>
-                    <source src = "'. $aud_path .'" type = "audio/flac">
-                    Your browser does not support audio.
-                </audio>
-            </div>';
-
+            <audio controls loop>
+                <source src = "'. $aud_path .'" type = "audio/flac">
+                Your browser does not support audio.
+            </audio>
+        </div>';
+ 
         echo '<div class = "checkout-container">
                 <form action = "/php/wishlist.php" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
@@ -254,5 +267,45 @@
             'E-mail: '. $user['email'] .'<br>'.
             'Phone: '. $user['phone_nr'] .'</p>';
         echo '</div></div>'; 
+    }
+
+    // get all records from db
+    function get_all_records(){
+        GLOBAL $conn;
+
+        $recordsInfo = $conn->prepare("SELECT id_record, artist, album, catalogue FROM records");
+        $recordsInfo->execute();
+
+        $result = $recordsInfo->get_result();
+
+        return $result;
+    }
+
+    // displays all records on home page
+    function display_feed($records){
+
+        $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
+
+        foreach($records as $rec){
+            echo '<a href="/records/'. $rec['id_record'] .'" class="content-item">';
+        
+            $img_path_no_ext = "/img/records/".$rec['id_record'];
+            $img_path = $img_path_no_ext;
+            foreach($img_files as $img){
+                if($img_path_no_ext === cut_path($img)){
+                    $img_path = $img;
+                }
+            }
+
+            if($img_path_no_ext === $img_path){
+                echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
+            }
+            else{
+                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+            }
+            
+            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '</a>';
+        }
     }
 ?>

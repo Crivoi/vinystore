@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2019 at 04:17 PM
+-- Generation Time: May 21, 2019 at 01:11 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -52,7 +52,11 @@ INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `cata
 (4, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
 (5, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
 (6, 0, 'ARTIST_TEST_6', 'ALBUM_TEST_6', 'LABEL_TEST_6', 'TEST001', 'HOUSE', 'M', 120, '2019-05-18'),
-(7, 1, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST002', 'HOUSE', 'M', 120, '2019-05-18');
+(7, 1, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST002', 'HOUSE', 'M', 120, '2019-05-18'),
+(8, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
+(9, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
+(10, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
+(11, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21');
 
 -- --------------------------------------------------------
 
@@ -105,7 +109,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `records`
 --
 ALTER TABLE `records`
-  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
