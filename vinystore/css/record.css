@@ -94,6 +94,11 @@ body{
     font-size: 20px;
 }
 
+#owner:before{
+    content: "Owner: ";
+    font-size: 20px;
+}
+
 #added-by:before{
     content: "Added by: ";
     font-size: 20px;
@@ -108,21 +113,22 @@ body{
     bottom: 425px;
     text-align: center;
     border-radius: 10px;
-    /* box-shadow: 2px 2px; */
     font-size: 15px;
-    /* float: right;
-    right: 675px; */
     left: 26%;
     padding: 10px;
     background-color: #cccccc;
 }
 
 #wishlist-btn{
-    left: 45%;
+    left: 46%;
+}
+
+#trade-btn.checkout-btn{
+    left: 38%;
 }
 
 #buy-btn.checkout-btn{
-    left: 25%;
+    left: 26.5%;
 }
 
 .checkout-container form{

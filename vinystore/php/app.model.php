@@ -173,7 +173,6 @@
         $img_path = $img_path_no_ext;
 
         foreach($img_files as $img){
-            // echo '<p>'.cut_path($img).'</p>';
             if($img_path_no_ext === cut_path($img)){
                 $img_path = $img;
                 break;
@@ -210,7 +209,8 @@
         echo '<span class="info">Genre: </span>';
         echo '<a href = "" class = "genre-name">'. $record['genre'] .'</a><br><br>';
         echo '<span class="info" id="price-tag">'. $record['price'] .'🥇</span><br><br>';
-        echo '<span class="info" id="condition">'. $record['cond'] .'</span>';
+        echo '<span class="info" id="condition">'. $record['cond'] .'</span><br><br>';
+        echo '<span class="info" id="owner">User 1</span>';
         if($aud_path_no_ext === $aud_path){
             echo '<br><br><span class="info">No Preview Available!</span>';
         }
@@ -225,15 +225,21 @@
  
         echo '<div class = "checkout-container">
                 <form action = "/php/wishlist.php" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
+                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "wish" value = "wishlist">
                         <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
                         Add to Wishlist 
                     </button>
                 </form>
                 <form action = "/php/shopping_cart.php" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "buy">
+                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "cart" value = "cart">
                         <img src = "../img/shopping-cart.png" alt = "wishlist_img">
                         Add to Cart
+                    </button>
+                </form>
+                <form action = "/php/exchange.php" method = "POST">
+                    <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "trade" value = "trade">
+                        <img src = "../img/trade.png" alt = "trade_img">
+                        Propose Trade
                     </button>
                 </form>
             </div>';
@@ -306,6 +312,25 @@
             
             echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
             echo '</a>';
+        }
+    }
+
+    function get_img_by_id($id){
+
+        $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
+        $img_path_no_ext = "/img/records/".$id;
+        $img_path = $img_path_no_ext;
+        foreach($img_files as $img){
+            if($img_path_no_ext === cut_path($img)){
+                $img_path = $img;
+            }
+        }
+
+        if($img_path_no_ext === $img_path){
+            return "/img/records/0.jpg";
+        }
+        else{
+            return $img_path;
         }
     }
 ?>
