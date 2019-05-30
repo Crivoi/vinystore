@@ -43,6 +43,7 @@
                 ];
             }
             if(!empty($recordInfo)){
+                http_response_code(200);
                 display_record($recordInfo);
             }
             else{

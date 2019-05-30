@@ -1,4 +1,7 @@
 <?php    
   include_once 'app.model.php';
-  get_img_by_id(3);
+  $usr = get_user_by_id(3);
+  foreach($usr as $u){
+    echo gettype($u);
+  }
 ?>
