@@ -18,14 +18,24 @@
         GLOBAL $conn;
 
         $date = date('y-m-d');
-        $insertInfo = $conn->prepare("INSERT INTO records (artist, album, label, catalogue, genre, cond, price, date_added) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-        $insertInfo->bind_param("ssssssss", $artist, $album, $label, $cat, $genre, $condition, $price, $date);
 
-        $insertInfo->execute();
-        $insertInfo->close();
+        $id_record = get_record_id();
+        $id_user = get_logged_user_id();
+        
+        $insertRecords = $conn->prepare("INSERT INTO records (id_user, artist, album, label, catalogue, genre, cond, price, date_added) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertRecords->bind_param("sssssssss", $id_user, $artist, $album, $label, $cat, $genre, $condition, $price, $date);
+
+        $insertRecords->execute();
+        $insertRecords->close();
         
         get_file('cover', "../img/records/");
         get_file('preview', "../audio_clips/previews/");
+
+        $insertMyRecords = $conn->prepare("INSERT INTO my_records (id_user, id_record, date_added) VALUES (?, ?, ?)");
+        $insertMyRecords->bind_param("sss", $id_user, $id_record, $date);
+
+        $insertMyRecords->execute();
+        $insertMyRecords->close();
     }
 
     // get id of last record added 
@@ -331,6 +341,27 @@
         }
         else{
             return $img_path;
+        }
+    }
+
+    function get_records_by_user_id($id){
+        GLOBAL $conn;
+
+        $myRecords = $conn->prepare("SELECT id_item, id_record FROM my_records WHERE id_user = ?");
+        $myRecords->bind_param("s", $id);
+        $myRecords->execute();
+
+        $records = $myRecords->get_result();
+
+        return $records;
+    }
+
+    function get_logged_user_id(){
+        if(preg_match('/^\/users\/([0-9]*)\/.*$/', $_SERVER['REQUEST_URI'], $id)){
+            return $id[1];
+        }
+        else{
+            return 1;
         }
     }
 ?>

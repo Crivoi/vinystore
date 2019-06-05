@@ -8,11 +8,11 @@
             <img src = "/img/shopping-cart.png" alt = "cart_img" class = "topnav-menu-img">
             <h4 class = "topnav-menu-btn">Cart</h4>
         </a>
-        <a href = "/php/my_records.php" class = "topnav-menu-item">
+        <a href = "/users/1/my_records" class = "topnav-menu-item">
             <img src = "/img/my_records.png" alt = "my_rec_img" class = "topnav-menu-img">
             <h4 class = "topnav-menu-btn">My Records</h4>
         </a>
-        <a href = "/php/add_record.php" class = "topnav-menu-item">
+        <a href = "/users/1/add_record" class = "topnav-menu-item">
             <img src = "/img/add_record.png" alt = "add_rec_img" class = "topnav-menu-img">
             <h4 class = "topnav-menu-btn">Add Record</h4>
         </a>   

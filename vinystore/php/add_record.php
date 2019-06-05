@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VinyStore Record</title>
-    <link rel = "stylesheet" type = "text/css" href = "../css/add_record.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/add_record.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/top_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/bot_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/filters.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
     <?php 
-        include_once './top_nav.php';
-        include_once './bot_nav.php';
-        include_once './filters.php';
+        include_once 'top_nav.php';
+        include_once 'bot_nav.php';
+        include_once 'filters.php';
     ?>
 
     <div class = "add-container">
-        <form action = "./add_record.php" method = "POST" class = "add-form" id = "form-id" enctype="multipart/form-data">
+        <form action = "" method = "POST" class = "add-form" id = "form-id" enctype="multipart/form-data">
             <h2>Insert Record Information: </h2>
             <div class = "form-item">
                 <label for = "artist">Artist: </label>
@@ -80,7 +80,7 @@
     </div>
 
     <?php
-        include_once './app.model.php';
+        include_once 'app.model.php';
 
         if(isset($_POST['submit'])){
             if(!empty($_POST['artist']) &&

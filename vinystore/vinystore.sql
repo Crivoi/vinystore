@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2019 at 01:11 PM
+-- Generation Time: Jun 05, 2019 at 11:25 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `vinystore`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `my_records`
+--
+
+CREATE TABLE `my_records` (
+  `id_item` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_record` int(11) NOT NULL,
+  `date_added` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `my_records`
+--
+
+INSERT INTO `my_records` (`id_item`, `id_user`, `id_record`, `date_added`) VALUES
+(0, 1, 26, '2019-06-05'),
+(0, 2, 27, '2019-06-05'),
+(0, 2, 27, '2019-06-05'),
+(0, 2, 28, '2019-06-05');
 
 -- --------------------------------------------------------
 
@@ -56,7 +79,37 @@ INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `cata
 (8, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
 (9, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
 (10, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
-(11, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21');
+(11, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
+(12, 0, 'ARTIST_TEST_8', 'ALBUM_TEST_8', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-22'),
+(13, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-22'),
+(14, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(15, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(16, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(17, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(18, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(19, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(20, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(21, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(22, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(23, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(24, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
+(25, 0, 'ARTIST_TEST_10', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-30'),
+(26, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
+(27, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
+(28, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
+(29, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `id_cart` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_record` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -84,6 +137,18 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `first_name`, `last_name`, `age`, `address`, `postal_code`, `phone_nr`) VALUES
 (1, 'user1', 'pass1', 'email_test@test.com', 'first', 'last', 20, 'str. garii', '100100', '+40723456789');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id_wish` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_record` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -96,10 +161,22 @@ ALTER TABLE `records`
   ADD KEY `id_record` (`id_record`);
 
 --
+-- Indexes for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`id_cart`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id_wish`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -109,13 +186,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `records`
 --
 ALTER TABLE `records`
-  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

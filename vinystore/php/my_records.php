@@ -13,14 +13,16 @@
 </head>
 <body>
     <?php 
-        include_once './top_nav.php';
-        include_once './bot_nav.php';
-        include_once './filters.php';
+        include_once 'top_nav.php';
+        include_once 'bot_nav.php';
+        include_once 'filters.php';
+        
+        include_once 'app.model.php'
     ?>
 
     <div class = "records-container">
         <h3>Your records: </h3>
-        <table class = "records-table">
+        <!-- <table class = "records-table">
             <tr>
                 <th>Artist</th>
                 <th>Album</th>
@@ -53,8 +55,12 @@
                 <td>80 Ron</td>
                 <td>❌</td>
             </tr>
-        </table>
-    </div>
+        </table> -->
 
+        <?php 
+
+            
+        ?>
+    </div>
 </body>
 </html>
