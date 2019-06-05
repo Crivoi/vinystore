@@ -4,7 +4,7 @@
         <h4 class = "topnav-logo-btn">Home</h4>
     </a>
     <div class = "topnav-menu">
-        <a  href ="/php/shopping_cart.php" class = "topnav-menu-item">
+        <a  href ="/users/1/cart" class = "topnav-menu-item">
             <img src = "/img/shopping-cart.png" alt = "cart_img" class = "topnav-menu-img">
             <h4 class = "topnav-menu-btn">Cart</h4>
         </a>

@@ -19,34 +19,35 @@
         include_once 'app.model.php';
     ?>
 
-    <div class = "content-container">
+    <!-- <div class = "content-container">
         <div class = "record-container" id = "record-container-id">
-            <!--    RECORD FEED STRUCTURE 
             <a href = "./record.php" class = "content-item">
                 <img src = "../img/vinyl-record.jpg" alt = "vinyl_img" class = "content-img">
                 <p class = "content-info">Artist - Album Name</p>
-            </a> 
-            -->
-
-            <!-- PHP --------------------------------------------------------------------------------->
-            <?php 
-                // include_once 'app.model.php';
-
-                // $records = get_all_records();
-
-                // display_feed($records);
-            ?>            
+            </a>        
         </div>
-    </div>
+    </div> -->
 
     <script>
-        let container = document.getElementById('record-container-id');
+        let body = document.querySelector('body');
+
+        let contentContainer = document.createElement('div');
+        contentContainer.setAttribute('class', 'content-container');
+        let container = document.createElement('div');
+        container.setAttribute('class', 'record-container');
         
-        fetch("http://localhost:8080/vinyls")
+        fetch("http://localhost:8080/api/vinyls")
 
         .then(resp => resp.json())
 
         .then(jsonResp => {
+            if(jsonResp.length == 0){
+                let h = document.createElement('h3');
+                h.innerText = 'Oops! Nothing in our database!';
+                h.setAttribute('style', 'display: inline; width: 100%; overflow: hidden;')
+
+                container.appendChild(h);
+            }
             for(var i = 0; i < jsonResp.length; i++){
                 let a = document.createElement('a');
                 a.setAttribute('href', '/records/' + jsonResp[i]['id_record']);
@@ -66,6 +67,9 @@
 
                 container.appendChild(a);
             }
+
+            contentContainer.appendChild(container);
+            body.append(contentContainer);
         })
         .catch(err => {
             alert(err);

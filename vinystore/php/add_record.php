@@ -57,7 +57,7 @@
             </div>
             <div class = "form-item">
                 <label for = "cover">Upload cover art: </label>
-                <input id = "cover" type = "file" name = "cover" accept = "image/*" hidden>
+                <input id = "cover" type = "file" name = "cover" accept = "image/*" value = "/img/nimma-artwork.PNG" hidden>
                 <label for = "cover" id = "cover-label">
                     <div class = "cover-div">
                         Choose cover-art image

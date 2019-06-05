@@ -19,23 +19,24 @@
 
         $date = date('y-m-d');
 
-        $id_record = get_record_id();
         $id_user = get_logged_user_id();
-        
+
         $insertRecords = $conn->prepare("INSERT INTO records (id_user, artist, album, label, catalogue, genre, cond, price, date_added) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insertRecords->bind_param("sssssssss", $id_user, $artist, $album, $label, $cat, $genre, $condition, $price, $date);
 
         $insertRecords->execute();
         $insertRecords->close();
-        
-        get_file('cover', "../img/records/");
-        get_file('preview', "../audio_clips/previews/");
+
+        $id_record = get_record_id();
 
         $insertMyRecords = $conn->prepare("INSERT INTO my_records (id_user, id_record, date_added) VALUES (?, ?, ?)");
         $insertMyRecords->bind_param("sss", $id_user, $id_record, $date);
 
         $insertMyRecords->execute();
         $insertMyRecords->close();
+        
+        save_file('cover', "../img/records/");
+        save_file('preview', "../audio_clips/previews/");
     }
 
     // get id of last record added 
@@ -67,7 +68,7 @@
     }
 
     // save cover_image and audio_preview for a record
-    function get_file($id, $target_dir){
+    function save_file($id, $target_dir){
         if($_FILES[$id]['name'] != ""){
             $file = $_FILES[$id]['name'];
             $path = pathinfo($file);
@@ -234,20 +235,20 @@
         </div>';
  
         echo '<div class = "checkout-container">
-                <form action = "/php/wishlist.php" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "wish" value = "wishlist">
+                <form action = "" method = "POST">
+                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
                         <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
                         Add to Wishlist 
                     </button>
                 </form>
-                <form action = "/php/shopping_cart.php" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "cart" value = "cart">
+                <form action = "" method = "POST">
+                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "cart">
                         <img src = "../img/shopping-cart.png" alt = "wishlist_img">
                         Add to Cart
                     </button>
                 </form>
-                <form action = "/php/exchange.php" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "trade" value = "trade">
+                <form action = "" method = "POST">
+                    <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade">
                         <img src = "../img/trade.png" alt = "trade_img">
                         Propose Trade
                     </button>
@@ -325,6 +326,7 @@
         }
     }
 
+    // search for an img by its record id
     function get_img_by_id($id){
 
         $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
@@ -344,7 +346,28 @@
         }
     }
 
-    function get_records_by_user_id($id){
+    // search for a preview by its record id
+    function get_preview_by_id($id){
+
+        $aud_files = glob("../audio_clips/previews/*.{mp3,flac,aif,aiff,wav}", GLOB_BRACE);
+        $aud_path_no_ext = "/audio_clips/previews/".$id;
+        $aud_path = $aud_path_no_ext;
+        foreach($aud_files as $aud){
+            if($aud_path_no_ext === cut_path($aud)){
+                $aud_path = $aud;
+            }
+        }
+
+        if($aud_path_no_ext === $aud_path){
+            return "/audio_clips/previews/0.mp3";
+        }
+        else{
+            return $aud_path;
+        }
+    }
+
+    // get records added by certain user 
+    function get_user_records($id){
         GLOBAL $conn;
 
         $myRecords = $conn->prepare("SELECT id_item, id_record FROM my_records WHERE id_user = ?");
@@ -356,12 +379,49 @@
         return $records;
     }
 
+    // get id of logged in user (from url)
     function get_logged_user_id(){
-        if(preg_match('/^\/users\/([0-9]*)\/.*$/', $_SERVER['REQUEST_URI'], $id)){
+        if(preg_match('/^.*\/users\/([0-9]*)\/.*$/', $_SERVER['REQUEST_URI'], $id)){
             return $id[1];
         }
         else{
             return 1;
+        }
+    }
+
+    // remove a record, and its files, from db (and server)
+    function remove_record($id_user, $id_record){
+        GLOBAL $conn;
+
+        $rm = $conn->prepare("DELETE FROM my_records WHERE id_user = ? AND id_record = ?");
+        $rm->bind_param("ss", $id_user, $id_record);
+        $rm->execute();
+        $rm->close();
+
+        $rm = $conn->prepare("DELETE FROM records WHERE id_record = ?");
+        $rm->bind_param("s", $id_record);
+        $rm->execute();
+        $rm->close();
+
+        $path_to_img = get_img_by_id($id_record);
+        $path_to_aud = get_preview_by_id($id_record);
+
+        if($path_to_img != "/img/records/0.jpg"){
+            if(!unlink(realpath($path_to_img))){
+                echo 'Img file can\'t be deleted.';
+            }
+            else{
+                echo 'Img file deleted successfully.';
+            }
+        }
+
+        if($path_to_aud != "/audio_clips/previews/0.mp3"){
+            if(!unlink($path_to_aud)){
+                echo 'Aud file can\'t be deleted.';
+            }
+            else{
+                echo 'Aud file deleted successfully.';
+            }
         }
     }
 ?>

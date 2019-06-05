@@ -1,6 +1,5 @@
 <?php    
   include_once 'app.model.php';
   
-  get_logged_user_id();
-
+  remove_record(1, 4);
 ?>

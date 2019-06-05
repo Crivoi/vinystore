@@ -60,10 +60,17 @@
                     //add_to_wishlist($id);
                     echo '<p>Added to wishlist.</p>';
                     break;
-                case 'buy':
+                case 'cart':
                     //add_to_cart($id);
                     echo '<p>Added to cart.</p>';
                     break;
+                case 'trade':
+                    //propose_trade();
+                    echo '<p>Traded.</p>';
+                    break;
+                default:
+                    echo 'aiurea';
+
             }
         }
     ?>
