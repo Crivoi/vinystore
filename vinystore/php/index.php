@@ -50,10 +50,11 @@
             }
             for(var i = 0; i < jsonResp.length; i++){
                 let a = document.createElement('a');
-                a.setAttribute('href', '/records/' + jsonResp[i]['id_record']);
+                a.setAttribute('href', 'users/1/records/' + jsonResp[i]['id_record']);
                 a.setAttribute('class', 'content-item');
 
                 let img = document.createElement('img');
+                console.log(jsonResp[i]['path']);
                 img.setAttribute('src', jsonResp[i]['path']);
                 img.setAttribute('alt', 'vinyl_img');
                 img.setAttribute('class', 'content-img');

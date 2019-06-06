@@ -160,9 +160,6 @@
             $id_user = get_logged_user_id();
             $id_record = $_POST['record'];
 
-            echo '<p>'.$id_user.'</p>';
-            echo '<p>'.$id_record.'</p>';
-
             remove_record($id_user, $id_record);
         }
     ?>

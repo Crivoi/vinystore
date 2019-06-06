@@ -159,6 +159,10 @@ body{
     /* box-shadow: 2px 2px #261a0d; */
 }
 
+span#record-info:hover{
+    background-color: #cccccc;
+}
+
 @media screen and (max-width: 940px){
 
     .img-magnifier-container{

@@ -10,7 +10,7 @@
     <link rel = "stylesheet" type = "text/css" href = "/css/bot_nav.css">
     <link rel = "stylesheet" type = "text/css" href = "/css/filters.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <script src = "../js/magnifier.js"></script>
+    <script src = "/js/magnifier.js"></script>
 </head>
 <body>
     
@@ -25,7 +25,7 @@
         // $method = $_SERVER['REQUEST_METHOD'];
         //$payload = file_get_contents('php://input');
 
-        if(preg_match('/^\/records\/([0-9]*)$/', $endpoint, $id)){
+        if(preg_match('/^\/users\/[0-9]+\/records\/([0-9]*)$/', $endpoint, $id)){
 
             $record = get_record_by_id($id[1]);
             $recordInfo = [];
@@ -33,6 +33,7 @@
             foreach($record as $rec){
                 $recordInfo = [
                     "id_record" => $id[1],
+                    "id_user" => $rec['id_user'],
                     "artist" => $rec['artist'],
                     "album" => $rec['album'],
                     "label" => $rec['label'],
@@ -57,15 +58,15 @@
         if(isset($_POST['submit'])){
             switch($_POST['submit']){
                 case 'wishlist':
-                    //add_to_wishlist($id);
+                    add_to_wishlist(get_logged_user_id(), $recordInfo['id_record']);
                     echo '<p>Added to wishlist.</p>';
                     break;
                 case 'cart':
-                    //add_to_cart($id);
+                    add_to_cart(get_logged_user_id(), $recordInfo['id_record']);
                     echo '<p>Added to cart.</p>';
                     break;
                 case 'trade':
-                    //propose_trade();
+                    // propose_trade();
                     echo '<p>Traded.</p>';
                     break;
                 default:

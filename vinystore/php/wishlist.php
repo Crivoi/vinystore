@@ -13,13 +13,15 @@
 </head>
 <body>
     <?php 
-        include_once './top_nav.php';
-        include_once './bot_nav.php';
-        include_once './filters.php';
+        include_once 'top_nav.php';
+        include_once 'bot_nav.php';
+        include_once 'filters.php';
+
+        include_once 'app.model.php';
     ?>
-    <div class = "wish-container">
+    <div class = "wish-container" id = "wish-container-id">
         <h3>Your wishlist: </h3>
-        <table class = "wish-table">
+        <!-- <table class = "wish-table">
             <tr>
                 <th>Artist</th>
                 <th>Album</th>
@@ -48,8 +50,116 @@
                 <td>Techno, Minimal</td>
                 <td>80 Ron</td>
             </tr>
-        </table>
+        </table> -->
     </div>
+
+    <script>
+        let container = document.getElementById('wish-container-id');
+        var id = <?php echo get_logged_user_id() ?>;
+
+        fetch('http://localhost:8080/api/users/' + id + '/wishlist')
+
+        .then(resp => resp.json())
+
+        .then(jsonResp => {
+            console.log(jsonResp);
+            let table = document.createElement('table');
+            table.setAttribute('class', 'wish-table');
+            
+            let head = document.createElement('tr');
+
+            let artist = document.createElement('th');
+            artist.innerText = 'Artist';
+
+            let album = document.createElement('th');
+            album.innerText = 'Album';
+
+            let label = document.createElement('th');
+            label.innerText = 'Label';
+
+            let genre = document.createElement('th');
+            genre.innerText = 'Genre';
+
+            let price = document.createElement('th');
+            price.innerText = 'Price';
+
+            let remove = document.createElement('th');
+            remove.innerText = 'Remove';
+
+            head.appendChild(artist);
+            head.appendChild(album);
+            head.appendChild(label);
+            head.appendChild(genre);
+            head.appendChild(price);
+            head.appendChild(remove);
+
+            table.appendChild(head);
+
+            for(var i = 0; i < jsonResp.length; i++){
+                let row = document.createElement('tr');
+
+                artist = document.createElement('td');
+                artist.innerText = jsonResp[i]['artist'];
+
+                album = document.createElement('td');
+                album.innerText = jsonResp[i]['album'];
+
+                label = document.createElement('td');
+                label.innerText = jsonResp[i]['label'];
+
+                genre = document.createElement('td');
+                genre.innerText = jsonResp[i]['genre'];
+
+                price = document.createElement('td');
+                price.innerText = jsonResp[i]['price'];
+
+                remove = document.createElement('td');
+                
+                let removeForm = document.createElement('form');
+                removeForm.setAttribute('method', 'POST');
+                
+                let removeInput = document.createElement('input');
+                removeInput.setAttribute('type', 'text');
+                removeInput.setAttribute('value', jsonResp[i]['id_wish']);
+                removeInput.setAttribute('name', 'wish');
+                removeInput.setAttribute("hidden", true);
+                
+                let removeButton = document.createElement('button');
+                removeButton.setAttribute('type', 'submit');
+                removeButton.setAttribute('name', 'submit');
+                removeButton.setAttribute('value', 'remove');
+                removeButton.innerText = '❌';
+
+                removeForm.appendChild(removeInput);
+                removeForm.appendChild(removeButton);
+
+                remove.appendChild(removeForm);
+
+                row.appendChild(artist);
+                row.appendChild(album);
+                row.appendChild(label);
+                row.appendChild(genre);
+                row.appendChild(price);
+                row.appendChild(remove);
+
+                table.appendChild(row);
+            }
+
+            container.appendChild(table);
+        })    
+
+    </script>
+
+    <?php 
+        if(isset($_POST['submit'])){
+            $id_user = get_logged_user_id();
+            $id_wish = $_POST['wish'];
+
+            echo '<p>'.$id_wish.'</p>';
+
+            remove_wish($id_wish);
+        }
+    ?>
 
 </body>
 </html>

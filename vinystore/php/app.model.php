@@ -136,13 +136,41 @@
     }
 
     // add record to wishlist
-    function add_to_wishlist($id){
-        return 0;
+    function add_to_wishlist($id_user, $id_record){
+        GLOBAL $conn;
+
+        $records = get_wish_by_user($id_user);
+        foreach($records as $rec){
+            if($rec['id_record'] == $id_record){
+                echo 'Already in wishlist!';
+                return -1;
+            }
+        }
+
+        $insertWish = $conn->prepare("INSERT INTO wishlist (id_user, id_record) VALUES (?, ?)");
+        $insertWish->bind_param("ss", $id_user, $id_record);
+
+        $insertWish->execute();
+        $insertWish->close();
     }
 
     // add record to cart
-    function add_to_cart($id){
-        return 0;
+    function add_to_cart($id_user, $id_record){
+        GLOBAL $conn;
+
+        $records = get_cart_by_user($id_user);
+        foreach($records as $rec){
+            if($rec['id_record'] == $id_record){
+                echo 'Already in cart!';
+                return -1;
+            }
+        }
+
+        $insertCart = $conn->prepare("INSERT INTO shopping_cart (id_user, id_record) VALUES (?, ?)");
+        $insertCart->bind_param("ss", $id_user, $id_record);
+
+        $insertCart->execute();
+        $insertCart->close();
     }
 
     // calls an api
@@ -176,6 +204,24 @@
 
     // display a record from an array 
     function display_record($record){
+        GLOBAL $conn;
+
+        $userInfo = $conn->prepare("SELECT first_name, last_name FROM users WHERE id_user = ?");
+        $userInfo->bind_param("s", $record['id_user']);
+        $userInfo->execute();
+
+        $name = $userInfo->get_result();
+
+        foreach($name as $n){
+            $firstName = $n['first_name'];
+            $lastName = $n['last_name'];
+        }
+
+        if(empty($firstName) && empty($lastName)){
+            $firstName = 'User';
+            $lastName = 'Unknown';
+        }
+
 
         $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
         $aud_files = glob("../audio_clips/previews/*.{mp3,flac,wav,aif,aiff}", GLOB_BRACE);
@@ -206,10 +252,10 @@
             echo '<img src="/img/records/0.jpg" alt="vinyl-record" id="record-img">';
             echo '</div>';
         }
-        else{
+        else{            
             echo '<div class = "record-container">';
             echo '<div class = "img-magnifier-container">';
-            echo '<img src="'. $img_path .'" alt="vinyl-record" id="record-img">';
+            echo '<img src="'. substr($img_path, 2) .'" alt="vinyl-record" id="record-img">';
             echo '</div>';
         }
 
@@ -221,7 +267,7 @@
         echo '<a href = "" class = "genre-name">'. $record['genre'] .'</a><br><br>';
         echo '<span class="info" id="price-tag">'. $record['price'] .'🥇</span><br><br>';
         echo '<span class="info" id="condition">'. $record['cond'] .'</span><br><br>';
-        echo '<span class="info" id="owner">User 1</span>';
+        echo '<a href = \'/users/'. $record['id_user'] .'\'><span class="info" id="owner">'. $firstName .' '. $lastName .'</span></a>';
         if($aud_path_no_ext === $aud_path){
             echo '<br><br><span class="info">No Preview Available!</span>';
         }
@@ -229,7 +275,7 @@
 
         echo '<div class = "audio-container">
             <audio controls loop>
-                <source src = "'. $aud_path .'" type = "audio/flac">
+                <source src = "'. substr($aud_path, 2) .'" type = "audio/flac">
                 Your browser does not support audio.
             </audio>
         </div>';
@@ -237,19 +283,19 @@
         echo '<div class = "checkout-container">
                 <form action = "" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
-                        <img src = "../img/wishlist-heart.png" alt = "wishlist_img">
+                        <img src = "/img/wishlist-heart.png" alt = "wishlist_img">
                         Add to Wishlist 
                     </button>
                 </form>
                 <form action = "" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "cart">
-                        <img src = "../img/shopping-cart.png" alt = "wishlist_img">
+                        <img src = "/img/shopping-cart.png" alt = "wishlist_img">
                         Add to Cart
                     </button>
                 </form>
                 <form action = "" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade">
-                        <img src = "../img/trade.png" alt = "trade_img">
+                        <img src = "/img/trade.png" alt = "trade_img">
                         Propose Trade
                     </button>
                 </form>
@@ -379,6 +425,32 @@
         return $records;
     }
 
+    // get wishlist by user id
+    function get_wish_by_user($id){
+        GLOBAL $conn;
+
+        $wishlist = $conn->prepare("SELECT id_wish, id_record FROM wishlist WHERE id_user = ?");
+        $wishlist->bind_param("s", $id);
+        $wishlist->execute();
+
+        $records = $wishlist->get_result();
+
+        return $records;
+    }
+
+    // get shopping cart by user id
+    function get_cart_by_user($id){
+        GLOBAL $conn;
+
+        $cart = $conn->prepare("SELECT id_cart, id_record FROM shopping_cart WHERE id_user = ?");
+        $cart->bind_param("s", $id);
+        $cart->execute();
+
+        $records = $cart->get_result();
+
+        return $records;
+    }     
+
     // get id of logged in user (from url)
     function get_logged_user_id(){
         if(preg_match('/^.*\/users\/([0-9]*)\/.*$/', $_SERVER['REQUEST_URI'], $id)){
@@ -389,7 +461,7 @@
         }
     }
 
-    // remove a record, and its files, from db (and server)
+    // remove a record and its files from db (and server)
     function remove_record($id_user, $id_record){
         GLOBAL $conn;
 
@@ -424,4 +496,23 @@
             }
         }
     }
+
+    function remove_wish($id_wish){
+        GLOBAL $conn;
+
+        $rm = $conn->prepare("DELETE FROM wishlist WHERE id_wish = ?");
+        $rm->bind_param("s", $id_wish);
+        $rm->execute();
+        $rm->close();
+    }
+
+    function remove_cart($id_cart){
+        GLOBAL $conn;
+
+        $rm = $conn->prepare("DELETE FROM shopping_cart WHERE id_cart = ?");
+        $rm->bind_param("s", $id_cart);
+        $rm->execute();
+        $rm->close();
+    }
+
 ?>

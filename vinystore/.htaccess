@@ -5,6 +5,7 @@ RewriteRule ^home$ /php/index.php [NC,L]
 
 RewriteRule ^records/[0-9]+$ /php/record.php [NC,L]
 
+RewriteRule ^users/[0-9]+/records/[0-9]+$ /php/record.php [NC,L]
 RewriteRule ^users/[0-9]+$ /php/profile.php [NC,L]
 RewriteRule ^users/[0-9]+/wishlist /php/wishlist.php [NC,L]
 RewriteRule ^users/[0-9]+/cart /php/shopping_cart.php [NC,L]
@@ -19,3 +20,5 @@ RewriteRule ^test/.*$ /php/test.php [NC,L]
 
 RewriteRule ^api/vinyls$ /php/api.vinyls.php [NC,L]
 RewriteRule ^api/users/[0-9]+/my_records$ /php/api.my_records.php [NC,L] 
+RewriteRule ^api/users/[0-9]+/wishlist$ /php/api.wishlist.php [NC,L] 
+RewriteRule ^api/users/[0-9]+/cart$ /php/api.cart.php [NC,L] 
