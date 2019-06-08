@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2019 at 11:25 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: Jun 08, 2019 at 06:21 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,6 @@ CREATE TABLE `my_records` (
 --
 
 INSERT INTO `my_records` (`id_item`, `id_user`, `id_record`, `date_added`) VALUES
-(0, 1, 26, '2019-06-05'),
 (0, 2, 27, '2019-06-05'),
 (0, 2, 27, '2019-06-05'),
 (0, 2, 28, '2019-06-05');
@@ -94,7 +93,6 @@ INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `cata
 (23, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (24, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (25, 0, 'ARTIST_TEST_10', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-30'),
-(26, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
 (27, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
 (28, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
 (29, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05');
@@ -110,6 +108,25 @@ CREATE TABLE `shopping_cart` (
   `id_user` int(11) NOT NULL,
   `id_record` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE `tokens` (
+  `username` varchar(30) NOT NULL,
+  `token` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`username`, `token`) VALUES
+('ss', '4848229df9243888f8a70e96ce6f0a4ac0e1a299'),
+('ss', 'b5ec28a4fe76d4220f0a4a5f304992ac0cc82cf0');
 
 -- --------------------------------------------------------
 
@@ -204,7 +221,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

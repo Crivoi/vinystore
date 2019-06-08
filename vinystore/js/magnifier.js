@@ -52,3 +52,49 @@ function magnify(zoom) {
       return {x : x, y : y};
     }
   }
+
+  function Logare() {
+    var user = document.getElementById("user").value;
+    var parola = document.getElementById("parola").value;
+  
+    let xhr = new XMLHttpRequest();
+  
+    xhr.open("POST", "http://localhost:81/php/login.php");
+  
+    xhr.addEventListener("load", function loadCallback() {
+      switch (xhr.status) {
+        case 200:
+          console.log("Success, te-ai conectat");
+          console.log("*" + xhr.response.trim() + "*");
+          console.log(user);
+          if (xhr.response.trim()) {
+            console.log("login reusit", xhr.response.trim());
+            makeLogOutButton(user);
+            window.location.assign('http://localhost:81/php/login.php');
+            localStorage.setItem('currentUser', JSON.stringify({
+              name: user,
+              token: xhr.response.trim(),
+            }));
+          } else {
+            console.log("Username sau parola incorecte");
+            alert("Username incorect");
+            document.getElementById("user").value = '';
+          }
+  
+          break;
+        case 404:
+          console.log("Oops! Not found");
+          break;
+      }
+    });
+  
+    xhr.addEventListener("error", function errorCallback() {
+      console.log("Network error");
+    });
+  
+    let payload = {
+      user: `${user}`,
+      parola: `${parola}`
+    }
+    xhr.send(JSON.stringify(payload));
+  }

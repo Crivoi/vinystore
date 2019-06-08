@@ -57,7 +57,7 @@
         let container = document.getElementById('wish-container-id');
         var id = <?php echo get_logged_user_id() ?>;
 
-        fetch('http://localhost:8080/api/users/' + id + '/wishlist')
+        fetch('http://localhost:81/api/users/' + id + '/wishlist')
 
         .then(resp => resp.json())
 
