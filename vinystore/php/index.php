@@ -35,6 +35,7 @@
         contentContainer.setAttribute('class', 'content-container');
         let container = document.createElement('div');
         container.setAttribute('class', 'record-container');
+        container.setAttribute('id', 'record-container-id')
         
         fetch("http://localhost:8080/api/vinyls")
 
@@ -48,7 +49,7 @@
 
                 container.appendChild(h);
             }
-            for(var i = 0; i < jsonResp.length; i++){
+            for(var i = 0; i < 8; i++){
                 let a = document.createElement('a');
                 a.setAttribute('href', 'users/1/records/' + jsonResp[i]['id_record']);
                 a.setAttribute('class', 'content-item');
@@ -71,6 +72,40 @@
 
             contentContainer.appendChild(container);
             body.append(contentContainer);
+
+            document.addEventListener("scroll", function(event){
+                checkForNewDiv();
+            });
+
+            var checkForNewDiv = function(){
+                var lastItem = document.querySelector("#record-container-id > .content-item:last-child");
+                var lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
+                var pageOffset = window.pageYOffset + window.innerHeight;
+
+                if(pageOffset > lastItemOffset - 20){
+                    let a = document.createElement('a');
+                a.setAttribute('href', 'users/1/records/' + jsonResp[i]['id_record']);
+                a.setAttribute('class', 'content-item');
+
+                let img = document.createElement('img');
+                console.log(jsonResp[i]['path']);
+                img.setAttribute('src', jsonResp[i]['path']);
+                img.setAttribute('alt', 'vinyl_img');
+                img.setAttribute('class', 'content-img');
+
+                let p = document.createElement('p');
+                p.setAttribute('class', 'content-info');
+                p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
+
+                a.appendChild(img);
+                a.appendChild(p);
+
+                container.appendChild(a);
+                i++;
+                checkForNewDiv();
+                }
+
+            };
         })
         .catch(err => {
             alert(err);
