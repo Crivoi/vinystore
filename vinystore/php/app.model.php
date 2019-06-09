@@ -63,7 +63,7 @@
         $id = $idInfo->get_result();
 
         foreach($id as $row){
-            return $row['id_record'];
+            return $row['id_user'];
         }
     }
 
@@ -312,11 +312,14 @@
         $img_path = "/users/".$user['id_user'];
 
         foreach($img_files as $img){
-            // echo '<p>'.cut_path($img).'</p>';
             if($img_path === cut_path($img)){
                 $img_path = $img;
                 break;
             }
+        }
+
+        if($img_path === "/users/".$user['id_user']){
+            $img_path = "/users/1.png";
         }
 
         echo '<div class="profile">';
@@ -497,6 +500,7 @@
         }
     }
 
+    // remove a record from wishlist
     function remove_wish($id_wish){
         GLOBAL $conn;
 
@@ -506,6 +510,7 @@
         $rm->close();
     }
 
+    // remove a record from cart
     function remove_cart($id_cart){
         GLOBAL $conn;
 
@@ -571,111 +576,99 @@
         }
     }
 
+    function getLoggedUser($id) {
+        GLOBAL $conn;
 
+        $loginStmt = $conn -> prepare('SELECT * FROM users WHERE id_user = ?');
+        $loginStmt -> bind_param('s', $id);
 
-class Logare
-{
-	public $conn;
-	public function __construct(){
-		global $conn;
-		$conn = new mysqli ("localhost:81", "root", "", "vinystore");
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-	}
-		
-	public function insertUser($username, $password){
-		global $conn;
-		$result=mysqli_query($conn,"INSERT INTO `users` ( `username`, `parola`) VALUES ('".$username."','".sha1($password)."')");
-		return $result;
-    }
-        
-	public function getUser($user){
-		global $conn;
-		$stmt = $conn->prepare("SELECT username FROM users where username like '%" . $user . "' ;");
-		if (false === $stmt ) {
-		    die('prepare() failed: ' . htmlspecialchars($conn->error));
-		}
-		$stmt->execute();
-		$result = $stmt -> get_result();
-		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
-		if ($rows == false){
-		    return 0;
-		}
-		else {
-		    return 1;
-		}
-    }
-        
-	public function makeToken($user)
-	{
-		global $conn;
-		$time = time();
-		$hashString = sha1($user.$time);
-		$stmt = $conn->prepare("INSERT INTO tokens (username, token) VALUES('".$user."','".$hashString."')");
-		if (false === $stmt ) {
-		    die('prepare() failed: ' . htmlspecialchars($conn->error));
-		}
-		$stmt->execute();
-		$result = $stmt -> get_result();
-		return $hashString;
-    }
-        
-	public function isTokenValid($token){
-		global $conn;
-		$stmt = $conn->prepare("SELECT * FROM tokens WHERE token='".$token."'");
-		if (false === $stmt ) {
-		    die('prepare() failed: ' . htmlspecialchars($conn->error));
-		}
-		$stmt->execute();
-		$result = $stmt -> get_result();
-		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
-		if ($rows == false){
-		    return 0;
-		}
-		else {
-		    return 1;
-        }   
-    }
-        
-	public function deleteToken($token){
-		global $conn;
-		$stmt = $conn->prepare("delete FROM tokens WHERE token='".$token."'");
-		if (false === $stmt ) {
-		    die('prepare() failed: ' . htmlspecialchars($conn->error));
-		}
-		$stmt->execute();
-		$result = $stmt -> get_result();
-		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
-		if ($rows == false){
-		    return 0;
-		}
-		else {
-		    return 1;
-		}
-    }
-        
-	public function getParola($parola){
-		global $conn;
-		$stmt = $conn->prepare("SELECT parola FROM users where parola like '%".sha1($parola)."' ;");
-		if (false === $stmt ) {
-		    die('prepare() failed: ' . htmlspecialchars($conn->error));
-		}
-		$stmt->execute();
-		$result = $stmt -> get_result();
-		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
-		if ($rows == false){
-		    return 0;
-		}
-		else {
-		    return 1;
-		}
-	}
+        $loginStmt -> execute();
+        $results = $loginStmt -> get_result();
+        $loginStmt -> close();
 
-		
-		
+        
+        if($results -> num_rows  === 1) {
+            $firstRow = $results -> fetch_assoc();
+            
+            return new User($firstRow['id_user'], $firstRow['username'], $firstRow['password'], $firstRow['email'], $firstRow['first_name'], 
+                $firstRow['last_name'], $firstRow['age'], $firstRow['address'], $firstRow['postal_code'], $firstRow['phone_nr']);
+        } 
 
-}
+        return NULL;
+    }
 
+    function login($username, $password) {
+        GLOBAL $conn;
+
+        $hashedPassword = md5($password);
+        $loginStmt = $conn -> prepare('SELECT * FROM users WHERE username = ? AND password = ?');
+        $loginStmt -> bind_param('ss', $username, $hashedPassword);
+
+        $loginStmt -> execute();
+        $results = $loginStmt -> get_result();
+        $loginStmt -> close();
+        
+        if($results -> num_rows  === 1) {
+            $firstRow = $results -> fetch_assoc();
+
+            return new User($firstRow['id_user'], $firstRow['username'], $firstRow['password'], $firstRow['email'], $firstRow['first_name'], 
+            $firstRow['last_name'], $firstRow['age'], $firstRow['address'], $firstRow['postal_code'], $firstRow['phone_nr']);
+        } 
+
+        return NULL;
+    }
+
+    function register($username, $password, $email, $firstName, $lastName, $age, $address, $postalCode, $phoneNr) {
+        GLOBAL $conn;
+
+        $registerCheck = $conn->prepare('SELECT username FROM users WHERE username = ?');
+        $registerCheck->bind_param('s', $username);
+        $registerCheck->execute();
+
+        $user = $registerCheck->get_result();
+        if($user->num_rows  === 1){
+            echo '<h2 style="color:white;">Username already exists!</h2>';
+            return false;
+        }
+
+        $user->close();
+
+        $hashedPassword = md5($password);
+        $registerStmt = $conn -> prepare('INSERT INTO users (username, password, email, first_name, last_name, age, address, postal_code, phone_nr) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $registerStmt -> bind_param('sssssssss', $username, $hashedPassword, $email, $firstName, $lastName, $age, $address, $postalCode, $phoneNr);
+        $registerStmt -> execute();
+
+        $registerStmt -> close();
+
+        $id = get_user_id();
+
+        return $id;
+    }
+
+    class User {
+        public $id;
+        public $username;
+        public $password;
+        public $email;
+        public $firstName;
+        public $lastName;
+        public $age;
+        public $address;
+        public $postalCode;
+        public $phoneNr;
+
+        function __construct($id, $username, $password, $email, $firstName, $lastName, $age, $address, $postalCode, $phoneNr) {
+            $this -> id = $id;
+            $this -> username = $username;
+            $this -> password = $password;
+            $this -> email= $username;
+            $this -> fistName = $firstName;
+            $this -> lastName = $lastName;
+            $this -> age = $age;
+            $this -> address = $address;
+            $this -> postalCode = $postalCode;
+            $this -> phoneNr = $phoneNr;
+        }
+    }
 
 ?>

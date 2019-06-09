@@ -22,8 +22,6 @@
         include_once 'app.model.php';
 
         $endpoint = $_SERVER['REQUEST_URI'];
-        // $method = $_SERVER['REQUEST_METHOD'];
-        //$payload = file_get_contents('php://input');
 
         if(preg_match('/^\/users\/[0-9]+\/records\/([0-9]*)$/', $endpoint, $id)){
 
