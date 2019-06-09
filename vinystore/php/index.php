@@ -37,7 +37,7 @@
         container.setAttribute('class', 'record-container');
         container.setAttribute('id', 'record-container-id')
         
-        fetch("http://localhost:8080/api/vinyls")
+        fetch("http://localhost:81/api/vinyls")
 
         .then(resp => resp.json())
 

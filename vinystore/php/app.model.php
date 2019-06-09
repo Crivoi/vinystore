@@ -515,4 +515,167 @@
         $rm->close();
     }
 
+    // display all records by input in searchBar
+    function display_records_by_searchBar($records){
+
+        $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
+
+        foreach($records as $rec){
+            echo '<a href="/records/'. $rec['id_record'] .'" class="content-item">';
+        
+            $img_path_no_ext = "/img/records/".$rec['id_record'];
+            $img_path = $img_path_no_ext;
+            foreach($img_files as $img){
+                if($img_path_no_ext === cut_path($img)){
+                    $img_path = $img;
+                }
+            }
+
+            if($img_path_no_ext === $img_path){
+                echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
+            }
+            else{
+                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+            }
+            
+            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '</a>';
+        }
+    }
+
+    // display all records by filters
+    function display_records_by_Filters($records){
+
+        $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
+
+        foreach($records as $rec){
+            echo '<a href="/records/'. $rec['id_record'] .'" class="content-item">';
+        
+            $img_path_no_ext = "/img/records/".$rec['id_record'];
+            $img_path = $img_path_no_ext;
+            foreach($img_files as $img){
+                if($img_path_no_ext === cut_path($img)){
+                    $img_path = $img;
+                }
+            }
+
+            if($img_path_no_ext === $img_path){
+                echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
+            }
+            else{
+                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+            }
+            
+            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '</a>';
+        }
+    }
+
+
+
+class Logare
+{
+	public $conn;
+	public function __construct(){
+		global $conn;
+		$conn = new mysqli ("localhost:81", "root", "", "vinystore");
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+	}
+		
+	public function insertUser($username, $password){
+		global $conn;
+		$result=mysqli_query($conn,"INSERT INTO `users` ( `username`, `parola`) VALUES ('".$username."','".sha1($password)."')");
+		return $result;
+    }
+        
+	public function getUser($user){
+		global $conn;
+		$stmt = $conn->prepare("SELECT username FROM users where username like '%" . $user . "' ;");
+		if (false === $stmt ) {
+		    die('prepare() failed: ' . htmlspecialchars($conn->error));
+		}
+		$stmt->execute();
+		$result = $stmt -> get_result();
+		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
+		if ($rows == false){
+		    return 0;
+		}
+		else {
+		    return 1;
+		}
+    }
+        
+	public function makeToken($user)
+	{
+		global $conn;
+		$time = time();
+		$hashString = sha1($user.$time);
+		$stmt = $conn->prepare("INSERT INTO tokens (username, token) VALUES('".$user."','".$hashString."')");
+		if (false === $stmt ) {
+		    die('prepare() failed: ' . htmlspecialchars($conn->error));
+		}
+		$stmt->execute();
+		$result = $stmt -> get_result();
+		return $hashString;
+    }
+        
+	public function isTokenValid($token){
+		global $conn;
+		$stmt = $conn->prepare("SELECT * FROM tokens WHERE token='".$token."'");
+		if (false === $stmt ) {
+		    die('prepare() failed: ' . htmlspecialchars($conn->error));
+		}
+		$stmt->execute();
+		$result = $stmt -> get_result();
+		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
+		if ($rows == false){
+		    return 0;
+		}
+		else {
+		    return 1;
+        }   
+    }
+        
+	public function deleteToken($token){
+		global $conn;
+		$stmt = $conn->prepare("delete FROM tokens WHERE token='".$token."'");
+		if (false === $stmt ) {
+		    die('prepare() failed: ' . htmlspecialchars($conn->error));
+		}
+		$stmt->execute();
+		$result = $stmt -> get_result();
+		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
+		if ($rows == false){
+		    return 0;
+		}
+		else {
+		    return 1;
+		}
+    }
+        
+	public function getParola($parola){
+		global $conn;
+		$stmt = $conn->prepare("SELECT parola FROM users where parola like '%".sha1($parola)."' ;");
+		if (false === $stmt ) {
+		    die('prepare() failed: ' . htmlspecialchars($conn->error));
+		}
+		$stmt->execute();
+		$result = $stmt -> get_result();
+		$rows = mysqli_fetch_all ($result, MYSQLI_ASSOC);
+		if ($rows == false){
+		    return 0;
+		}
+		else {
+		    return 1;
+		}
+	}
+
+		
+		
+
+}
+
+
 ?>
