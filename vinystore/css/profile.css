@@ -41,12 +41,8 @@ body{
 .checkout-btn{
   position: relative;
   left: 80%;
-<<<<<<< HEAD
   top: -100px;
   font-family: Raleway, 'sans-serif';
-=======
-  top: -100px; 
->>>>>>> 65c3376cbad7c3897144ff1005acb76d63fafd83
 }
 
 .checkout-btn img{

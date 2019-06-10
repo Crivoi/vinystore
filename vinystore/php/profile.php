@@ -60,17 +60,6 @@
             }
   
         }
-<<<<<<< HEAD
     ?>    
-=======
-    ?>
-
-    <form action = "/php/profile.controller.php" id = "logout-form" method = "POST" id = "checkout-form">
-        <button type = "submit" name = "submit" class = "checkout-btn">
-            <img src = "/img/logout.png" alt = "cart_img">
-            Log Out
-        </button>
-    </form>
->>>>>>> 65c3376cbad7c3897144ff1005acb76d63fafd83
 </body>
 </html>
