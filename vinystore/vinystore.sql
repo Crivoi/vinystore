@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2019 at 06:21 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jun 10, 2019 at 03:57 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `vinystore`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artists`
+--
+
+CREATE TABLE `artists` (
+  `id_artist` int(11) NOT NULL,
+  `artist_name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `artists`
+--
+
+INSERT INTO `artists` (`id_artist`, `artist_name`) VALUES
+(1, '0'),
+(2, '0'),
+(3, '0'),
+(4, '0'),
+(5, 'ARTIST_TEST_1'),
+(6, 'ARTIST_TEST_1'),
+(7, 'ARTIST_TEST_1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `labels`
+--
+
+CREATE TABLE `labels` (
+  `id_label` int(11) NOT NULL,
+  `label_name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `labels`
+--
+
+INSERT INTO `labels` (`id_label`, `label_name`) VALUES
+(1, '0'),
+(2, '0'),
+(3, '0'),
+(4, '0'),
+(5, 'ARTIST_TEST_1'),
+(6, 'ARTIST_TEST_1');
 
 -- --------------------------------------------------------
 
@@ -42,7 +89,40 @@ CREATE TABLE `my_records` (
 INSERT INTO `my_records` (`id_item`, `id_user`, `id_record`, `date_added`) VALUES
 (0, 2, 27, '2019-06-05'),
 (0, 2, 27, '2019-06-05'),
-(0, 2, 28, '2019-06-05');
+(0, 2, 28, '2019-06-05'),
+(0, 1, 30, '2019-06-09'),
+(0, 24, 31, '2019-06-10'),
+(0, 24, 32, '2019-06-10'),
+(0, 24, 33, '2019-06-10'),
+(0, 24, 34, '2019-06-10'),
+(0, 24, 35, '2019-06-10'),
+(0, 24, 36, '2019-06-10'),
+(0, 24, 37, '2019-06-10'),
+(0, 24, 38, '2019-06-10'),
+(0, 24, 39, '2019-06-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id_order` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_record` int(11) NOT NULL,
+  `date_placed` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id_order`, `id_user`, `id_record`, `date_placed`) VALUES
+(1, 24, 9, '2019-06-10'),
+(2, 24, 10, '2019-06-10'),
+(3, 24, 11, '2019-06-10'),
+(4, 24, 13, '2019-06-10');
 
 -- --------------------------------------------------------
 
@@ -68,25 +148,11 @@ CREATE TABLE `records` (
 --
 
 INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `catalogue`, `genre`, `cond`, `price`, `date_added`) VALUES
-(1, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
-(2, 0, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST001', 'TECHNO', 'VG', 120, '2019-05-18'),
-(3, 0, 'ARTIST_TEST_3', 'ALBUM_TEST_3', 'LABEL_TEST_3', 'TEST003', 'HOUSE', 'M', 100, '2019-05-18'),
-(4, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
-(5, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-18'),
-(6, 0, 'ARTIST_TEST_6', 'ALBUM_TEST_6', 'LABEL_TEST_6', 'TEST001', 'HOUSE', 'M', 120, '2019-05-18'),
-(7, 1, 'ARTIST_TEST_2', 'ALBUM_TEST_2', 'LABEL_TEST_2', 'TEST002', 'HOUSE', 'M', 120, '2019-05-18'),
-(8, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
-(9, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
-(10, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
-(11, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-21'),
-(12, 0, 'ARTIST_TEST_8', 'ALBUM_TEST_8', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-22'),
-(13, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-22'),
 (14, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (15, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (16, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (17, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (18, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
-(19, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (20, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (21, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
 (22, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-23'),
@@ -95,7 +161,17 @@ INSERT INTO `records` (`id_record`, `id_user`, `artist`, `album`, `label`, `cata
 (25, 0, 'ARTIST_TEST_10', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-05-30'),
 (27, 0, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
 (28, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
-(29, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05');
+(29, 2, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-05'),
+(30, 1, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-09'),
+(31, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(32, 24, 'mike t', 'ALBUM_TEST_1', 'amphia', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(33, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(34, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(35, 24, 'asdfasf', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(36, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(37, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(38, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10'),
+(39, 24, 'ARTIST_TEST_1', 'ALBUM_TEST_1', 'LABEL_TEST_1', 'TEST001', 'HOUSE', 'M', 100, '2019-06-10');
 
 -- --------------------------------------------------------
 
@@ -137,7 +213,7 @@ INSERT INTO `tokens` (`username`, `token`) VALUES
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(33) NOT NULL,
   `email` varchar(30) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -152,7 +228,30 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `first_name`, `last_name`, `age`, `address`, `postal_code`, `phone_nr`) VALUES
-(1, 'user1', 'pass1', 'email_test@test.com', 'first', 'last', 20, 'str. garii', '100100', '+40723456789');
+(1, 'user1', 'pass1', 'email_test@test.com', 'first', 'last', 20, 'str. garii', '100100', '+40723456789'),
+(2, 'mike', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(3, 'bob', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(4, 'bob1', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(5, 'blb', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(6, 'bobber', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(7, 'bobatus', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(8, 'bobafet', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(9, 'bobbenus', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(10, 'boberman', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(11, 'bobitza', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(12, 'bobeanu', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(13, 'bobitza01', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(14, 'bobolo', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(15, 'bobmike', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(16, 'bob11', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(17, 'bob123', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(18, 'bob123141', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(19, 'bobleau', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(20, 'bobeaasfa', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(21, 'bob12415q241123', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(22, 'bobasdfasff', '9f9d51bc70ef21ca5c14', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(23, 'bobasc', '9f9d51bc70ef21ca5c14f307980a29d8', 'bob@gmail.com', 'Bob', 'Bobber', 25, 'Bob Str.', '101010', '+40723124123'),
+(24, 'crivu', '26b1bc56dc2bb08c6a7a27984b502ca9', 'crivu@gmail.com', 'Crivu', 'Crivu', 21, 'Crivu Str.', '101010', '+40723124123');
 
 -- --------------------------------------------------------
 
@@ -169,6 +268,24 @@ CREATE TABLE `wishlist` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `artists`
+--
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`id_artist`);
+
+--
+-- Indexes for table `labels`
+--
+ALTER TABLE `labels`
+  ADD PRIMARY KEY (`id_label`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id_order`);
 
 --
 -- Indexes for table `records`
@@ -200,10 +317,28 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `artists`
+--
+ALTER TABLE `artists`
+  MODIFY `id_artist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `labels`
+--
+ALTER TABLE `labels`
+  MODIFY `id_label` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `records`
 --
 ALTER TABLE `records`
-  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_record` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
@@ -215,13 +350,13 @@ ALTER TABLE `shopping_cart`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_wish` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
