@@ -21,36 +21,6 @@
     ?>
     <div class = "wish-container" id = "wish-container-id">
         <h3>Your wishlist: </h3>
-        <!-- <table class = "wish-table">
-            <tr>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Label</th>
-                <th>Genre</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-        </table> -->
     </div>
 
     <script>
@@ -86,12 +56,16 @@
             let remove = document.createElement('th');
             remove.innerText = 'Remove';
 
+            let cart = document.createElement('th');
+            cart.innerText = 'Add to cart';
+
             head.appendChild(artist);
             head.appendChild(album);
             head.appendChild(label);
             head.appendChild(genre);
             head.appendChild(price);
             head.appendChild(remove);
+            head.appendChild(cart);
 
             table.appendChild(head);
 
@@ -135,14 +109,38 @@
 
                 remove.appendChild(removeForm);
 
+                let addCart = document.createElement('td');
+
+                let cartForm = document.createElement('form');
+                cartForm.setAttribute('method', 'POST');
+                
+                let cartInput = document.createElement('input');
+                cartInput.setAttribute('type', 'text');
+                cartInput.setAttribute('value', jsonResp[i]['id_record']);
+                cartInput.setAttribute('name', 'cart');
+                cartInput.setAttribute("hidden", true);
+                
+                let cartButton = document.createElement('button');
+                cartButton.setAttribute('type', 'submit');
+                cartButton.setAttribute('name', 'submit');
+                cartButton.setAttribute('value', 'cart');
+                cartButton.innerText = '🛒';
+
+                cartForm.appendChild(cartInput);
+                cartForm.appendChild(cartButton);
+
+                addCart.appendChild(cartForm);
+
                 row.appendChild(artist);
                 row.appendChild(album);
                 row.appendChild(label);
                 row.appendChild(genre);
                 row.appendChild(price);
                 row.appendChild(remove);
+                row.appendChild(addCart);
 
                 table.appendChild(row);
+
             }
 
             container.appendChild(table);
@@ -151,13 +149,17 @@
     </script>
 
     <?php 
+        $id_user = get_logged_user_id();
         if(isset($_POST['submit'])){
-            $id_user = get_logged_user_id();
-            $id_wish = $_POST['wish'];
+            if($_POST['submit'] === 'remove'){
+                
+                $id_wish = $_POST['wish'];
+                remove_wish($id_wish);
 
-            echo '<p>'.$id_wish.'</p>';
-
-            remove_wish($id_wish);
+            }else if($_POST['submit'] === 'cart'){
+                echo $_POST['cart'];
+                add_to_cart($id_user, $_POST['cart']);
+            }
         }
     ?>
 

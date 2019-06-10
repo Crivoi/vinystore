@@ -42,6 +42,13 @@
             if(!empty($userInfo)){
                 http_response_code(200);
                 display_user($userInfo);
+
+                echo '<form action = "/php/profile.controller.php" id = "logout-form" method = "POST" id = "checkout-form">
+                        <button type = "submit" name = "submit" class = "checkout-btn">
+                            <img src = "/img/logout.png" alt = "cart_img">
+                            Log Out
+                        </button>
+                    </form>';
             }
             else{
                 http_response_code(404);
@@ -51,21 +58,6 @@
             }
   
         }
-    ?>
-
-    <!-- <div class="profile">
-        <img src="https://pbs.twimg.com/profile_images/1665866395/Profile_Square_Colour_200x200_400x400.jpg" alt="profile_image" class="profile-image">
-        <div class="person-information">    
-            <h2 class="person-name">Andrei Cristinescu</h2>
-            <h4 class="person-short-info ">24 ani, Romania</h4>
-            <p class="person-details">
-                    Adresa: Sos. Dudesti - Pantelimon nr. 42, sector 3,Bucuresti<br>
-                    Cod Postal: 033094<br>
-                    E-mail: Andrei.Cristinescu@gmail.ro<br>
-                    Telefon: 0714 028 223.
-            </p>
-        </div>
-    </div> -->
-
+    ?>    
 </body>
 </html>

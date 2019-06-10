@@ -43,6 +43,39 @@ body{
     color: black;
 }
 
+.checkout-container form{
+    display: inline;
+}
+
+.checkout-container{
+    padding: 50px 10px;
+}
+
+.checkout-btn{
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    background-color: #cccccc;
+}
+
+.checkout-btn img{
+    width: 20px;
+    float: right;
+    padding: 0px 4px;
+}
+
+.checkout-btn:hover{
+    background-color: #bf8040;
+}
+
+.checkout-btn:active{
+    background-color: #cccccc;
+}
+
 @media screen and (max-width: 940px){
 
     .cart-container{

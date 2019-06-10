@@ -90,6 +90,13 @@ body{
     background-color: #666666;
 }
 
+.no-match{
+    color: white;
+    position: relative;
+    top: 85%;
+    margin-left: 10%;
+}
+
 @media screen and (max-width: 940px){
     .card{ 
         position:absolute;

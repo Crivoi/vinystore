@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VinyStore Artist List</title>
-    <link rel = "stylesheet" type = "text/css" href = "../css/filters.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/artists_list.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/top_nav.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/bot_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/filters.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/artists_list.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/top_nav.css">
+    <link rel = "stylesheet" type = "text/css" href = "/css/bot_nav.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
     <?php 
-        include_once './top_nav.php';
-        include_once './bot_nav.php';
-        include_once './filters.php';
+        include_once 'top_nav.php';
+        include_once 'bot_nav.php';
+        include_once 'filters.php';
     ?>
     
-    <div class="artist-list-container">
+    <!-- <div class="artist-list-container">
         <div class="artist-list">
             <h3>A</h3>
             <hr>
@@ -53,76 +53,10 @@
             <p>Baby Ford</p>
             <p>Babyface</p>
         </div>
-        <div class="artist-list">
-            <h3>C</h3>
-            <hr>
-            <p>C-Edits</p>
-            <p>C-Raw</p>
-            <p>C.K.</p>
-            <p>Cab Drivers</p>
-            <p>Cabsum</p>
-            <p>Caceress</p>
-            <p>Cafe Galaxy</p>
-            <p>Cally</p>
-            <p>Camelia Boys</p>
-            <p>Camilo</p>
-            <p>Cally</p>
-            <p>Camelia Boys</p>
-            <p>Camilo</p>
-            
-        </div>
-        <div class="artist-list">
-            <h3>D</h3>
-            <hr>
-            <p>D Julz</p>
-            <p>D.A.L.I</p>
-            <p>Da Ruff</p>
-            <p>Dada Ques</p>
-            <p>Daft Punk</p>
-            <p>Daisuke Kondo</p>
-            <p>Dakpa</p>
-            <p>Damiano von Erckert</p>
-            <p>Da Ruff</p>
-            <p>Dada Ques</p>
-            <p>Daft Punk</p>
-            <p>Da Ruff</p>
-            <p>Daisuke Kondo</p>
-        </div>
-        <div class="artist-list">
-            <h3>E</h3>
-            <hr>
-            <p>E-No</p>
-            <p>E. B. King</p>
-            <p>E.M.U.</p>
-            <p>Eaaz</p>
-            <p>Eabe Roots</p>
-            <p>Eaby Ford</p>
-            <p>Eabyface</p>
-            <p>Eacauanu</p>
-            <p>Eackstage Boys</p>
-            <p>Eaertaub</p>
-            <p>Eabe Roots</p>
-            <p>Eaby Ford</p>
-            <p>Eabyface</p>
-        </div>
-        <div class="artist-list">
-            <h3>F</h3>
-            <hr>
-            <p>F-No</p>
-            <p>F. B. King</p>
-            <p>F.M.U.</p>
-            <p>Faaz</p>
-            <p>Fabe Roots</p>
-            <p>Faby Ford</p>
-            <p>Fabyface</p>
-            <p>Facauanu</p>
-            <p>Fackstage Boys</p>
-            <p>Faertaub</p>
-            <p>F.M.U.</p>
-            <p>Faaz</p>
-            <p>Fabe Roots</p>
-        </div>
-    </div>
-    
+    </div> -->
+    <script>
+        artistsContainer = document.createElement('div');
+        artistsContainer.setAttribute('class', 'artist-list-container');
+    </script>
 </body>
 </html>

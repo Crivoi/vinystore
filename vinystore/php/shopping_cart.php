@@ -22,36 +22,15 @@
     
     <div class = "cart-container" id = "cart-container-id">
         <h3>Your cart: </h3>
-        <!-- <table class = "cart-table">
-            <tr>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Label</th>
-                <th>Genre</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-            <tr>
-                <td>Vot'e</td>
-                <td><a href = "./record.html">Hammersmith Flyover</a></td>
-                <td>miNIMMAl movement [NIMMA008]</td>
-                <td>Techno, Minimal</td>
-                <td>80 Ron</td>
-            </tr>
-        </table> -->
+    </div>
+
+    <div class = "checkout-container">
+        <form action = "" method = "POST">
+            <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "buy">
+                <img src = "/img/shopping-cart.png" alt = "buy_img">
+                Checkout 
+            </button>
+        </form>
     </div>
 
     <script>
@@ -152,13 +131,17 @@
     </script>
 
     <?php 
+        $user = getLoggedUser(get_logged_user_id());
+
         if(isset($_POST['submit'])){
-            $id_user = get_logged_user_id();
-            $id_cart = $_POST['cart'];
+            echo $_POST['submit'];
+            if($_POST['submit'] === 'remove'){
+                remove_cart($_POST['cart']);
 
-            echo '<p>'.$id_cart.'</p>';
-
-            remove_cart($id_cart);
+            }else if($_POST['submit'] === 'buy'){
+                checkout($user->id, $user->email);
+            }
+            
         }
     ?>
 
