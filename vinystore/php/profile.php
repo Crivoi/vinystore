@@ -43,6 +43,8 @@
                 http_response_code(200);
                 display_user($userInfo);
 
+                echo $_SESSION['id_user'];
+
                 echo '<form action = "/php/profile.controller.php" id = "logout-form" method = "POST" id = "checkout-form">
                         <button type = "submit" name = "submit" class = "checkout-btn">
                             <img src = "/img/logout.png" alt = "cart_img">

@@ -620,12 +620,14 @@
         }
     }
 
-    // places order
+    // place orders
     function checkout($id){
         GLOBAL $conn;
 
         $user = getLoggedUser($id);
         $cart_items = get_cart_by_user($id);
+
+        $date = date('y-m-d');
 
         foreach($cart_items as $item){
             
@@ -648,6 +650,12 @@
             $rmMyRec->close();
 
             remove_record($id, $item['id_record']);
+
+            $inOrder = $conn->prepare('INSERT INTO orders (id_user, id_record, date_placed) VALUES (?, ?, ?)');
+            $inOrder->bind_param("sss", $id, $item['id_record'], $date);
+
+            $inOrder->execute();
+            $inOrder->close();
         }
 
         $item_nr = sizeof($cart_items);
@@ -661,8 +669,8 @@
         $subject = "Order at VinyStore";
 
         $headers = array(
-            'From' => 'crivu@vinystore.com',
-            'Reply-To' => 'crivu@vinystore.com',
+            'From' => 'vinystore.test.email@gmail.com',
+            'Reply-To' => 'vinystore.test.email@gmail.com',
             'X-Mailer' => 'PHP/' . phpversion()
         );
         
