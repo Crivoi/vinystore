@@ -22,28 +22,31 @@
         <div class = "stat-item">
             <p>View statistics about: </p>
             <br>
-            <select>
-                <option value = "stock">Stock</option>
-                <option value = "sales">Sales</option>
-                <option value = "buyers">Faithful Buyers</option>
+            <select name="about" form="generate-statistics" >
+                <option value = "Stock">Stock</option>
+                <option value = "Sales">Best Buyers</option>
+                <option value = "Album">Album</option>
+                <option value = "Artist">Artist</option>
+                <option value = "all-data">All data</option>
             </select>
             <br>
             <p>In the last: </p>
             <br>
-            <select>
+            <select name="period" form="generate-statistics">
                 <option value = "week">Week</option>
                 <option value = "month">Month</option>
-                <option value = "sem">Semester</option>
                 <option value = "year">Year</option>
                 <option value = "ever">All time</option>
             </select>
             <br>
             <p>Export as: </p>
+            <form action = "/php/statistics.controller.php" id = "generate-statistics" method = "POST">
+                        <button type = "submit"  name = "submit-PDF" class = "exp-btn">PDF</button>
+                        <button type = "submit"  name = "submit-CSV" class = "exp-btn">CSV</button>
+                        <button type = "submit"  name = "submit-HTML" class = "exp-btn">HTML</button>                        
+            </form>
+
             <br>
-            <button class = "exp-btn">PDF</button>
-            <button class = "exp-btn">CSV</button>
-            <button class = "exp-btn">HTML</button>
-            <button class = "exp-btn">View In Browser</button>
         </div>
     </div>
 </body>
