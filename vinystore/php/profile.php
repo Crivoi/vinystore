@@ -45,9 +45,9 @@
 
                 echo $_SESSION['id_user'];
 
-                echo '<form action = "/php/profile.controller.php" id = "logout-form" method = "POST" id = "checkout-form">
-                        <button type = "submit" name = "submit" class = "checkout-btn">
-                            <img src = "/img/logout.png" alt = "cart_img">
+                echo '<form action = "/php/profile.controller.php" id = "logout-form" method = "POST" id = "checkout-form" style=" margin-top:-2.0%;">
+                        <button type = "submit" name = "submit" class = "checkout-btn" style="background-color:white;  border-radius:5px; width:150px; ">
+                            <img src = "/img/logout.png" alt = "cart_img" style="width:26px; height:30px;">
                             Log Out
                         </button>
                     </form>';

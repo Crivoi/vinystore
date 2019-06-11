@@ -2,6 +2,8 @@ body{
     font-family: Raleway, 'sans-serif';
 }
 
+
+
 .cart-container{
     /* border: 2px solid black; */
     border-radius: 5px;
@@ -80,5 +82,10 @@ body{
 
     .cart-container{
     overflow-x:auto;
+    }
+
+    .checkout-btn{
+        left:60%;
+        margin-top:60%;
     }
 }

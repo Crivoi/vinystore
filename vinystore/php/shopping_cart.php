@@ -24,10 +24,10 @@
         <h3>Your cart: </h3>
     </div>
 
-    <div class = "checkout-container">
+    <div class = "checkout-container" style="margin-left:0%;">
         <form action = "" method = "POST">
-            <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "buy">
-                <img src = "/img/shopping-cart.png" alt = "buy_img">
+            <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "buy"  style="background-color:white;  border-radius:5px; width:120px; ">
+                <img src = "/img/shopping-cart.png" alt = "buy_img" id = "buy-img" style="width:26px; height:30px;">
                 Checkout 
             </button>
         </form>

@@ -12,7 +12,7 @@ body{
 .person-information{
     display:inline-block;
     text-align: left;
-    margin-left:5%;
+    margin-left:15%;
 }
 
 .profile {
@@ -65,11 +65,14 @@ body{
 
 @media screen and (max-width: 940px){
   .profile {
+    display: block;
     width: 90%;
   }
   
-  .person-name,.person-information{
-    text-align:center;
+  .person-information{
+    display: block;
+    margin-left: 24%;
+    margin-right: auto;
   }
 
   .profile-image{

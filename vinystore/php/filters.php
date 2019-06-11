@@ -20,7 +20,7 @@
             <img src = "/img/search.png" alt = "search_img" class = "search-img">
         </a>
         <input type = "text" class = "search-input" id = "search" name = "search" placeholder="Search...">
-        <button type = "submit" name = "submit" value = "search-btn">Search!</button>
+        <button type = "submit" name = "submit" value = "search-btn" class="search-btn">Search!</button>
         <h3>VinyStore: Buy, Sell, Exchange</h3>
     </form>
 </div>

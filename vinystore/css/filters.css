@@ -126,4 +126,7 @@ button:hover{
         position: relative;
         padding: 2px 2px;
     }
+    .search-btn{
+        width:110px;
+    }
 }
