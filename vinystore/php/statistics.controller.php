@@ -222,7 +222,133 @@
                     // header('Location: /php/statistics.php');
                     break;
                 case 'HTML':
-                    break;
+
+                
+                if($_POST['period']=='week' and $_POST['about']=='all-data'){
+                    $query = "SELECT username AS USER,label  AS LABEL, catalogue AS CATALOGUE,price AS PRICE,date_added AS DATE FROM records JOIN users ON records.id_user=users.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY  ORDER BY date_added asc";
+                }
+        
+                if($_POST['period']=='month' and $_POST['about']=='all-data'){
+                    $query = "SELECT username  AS USER,label  AS LABEL, catalogue AS CATALOGUE,price AS PRICE ,date_added AS DATE FROM records JOIN users ON records.id_user=users.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY date_added asc";
+                }
+        
+                if($_POST['period']=='year' and $_POST['about']=='all-data'){
+                    $query = "SELECT username  AS USER,label  AS LABEL, catalogue AS CATALOGUE,price AS PRICE,date_added AS DATE FROM records JOIN users ON records.id_user=users.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+365 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY date_added asc";
+                }
+        
+                if($_POST['period']=='all-time' and $_POST['about']=='all-data'){
+                    $query = "SELECT username AS USER,label AS LABEL, catalogue AS CATALOGUE,price AS PRICE,date_added AS DATE FROM records JOIN users ON records.id_user=users.id_user ORDER BY date_added asc";
+                }
+        
+                if($_POST['period']=='week' and $_POST['about']=='album'){
+                    $query = "SELECT album AS ALBUM,Count(album) as NR_OF_COPIES,(Count(album)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY  ORDER BY album asc";
+                }
+        
+                if($_POST['period']=='month' and $_POST['about']=='album'){
+                    $query = "SELECT album AS ALBUM ,Count(album) as NR_OF_COPIES,(Count(album)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY album asc";
+                }
+        
+                if($_POST['period']=='year' and $_POST['about']=='album'){
+                    $query = "SELECT album AS ALBUM ,Count(album) as NR_OF_COPIES,(Count(album)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+365 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY album asc";
+                }
+        
+                if($_POST['period']=='all time' and $_POST['about']=='album'){
+                    $query = "SELECT album AS ALBUM ,Count(album) as NR_OF_COPIES,(Count(album)* 100 / (Select Count(*) From records)) as PERCENT FROM records ORDER BY album asc";
+                }
+        
+                if($_POST['period']=='week' and $_POST['about']=='artist'){
+                    $query = "SELECT artist AS ARTIST ,Count(artist) as NR_OF_COPIES,(Count(artist)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY  ORDER BY artist asc";
+                }
+        
+                if($_POST['period']=='month' and $_POST['about']=='artist'){
+                    $query = "SELECT artist AS ARTIST ,Count(artist) as NR_OF_COPIES,(Count(artist)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY artist asc";
+                }
+        
+                if($_POST['period']=='year' and $_POST['about']=='artist'){
+                    $query = "SELECT artist AS ARTIST ,Count(artist) as NR_OF_COPIES,(Count(artist)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+365 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY artist asc";
+                }
+        
+                if($_POST['period']=='all-time' and $_POST['about']=='artist'){
+                    $query = "SELECT artist AS ARTIST ,Count(artist) as NR_OF_COPIES,(Count(artist)* 100 / (Select Count(*) From records)) as PERCENT FROM records ORDER BY artist asc";
+                }
+        
+                if($_POST['period']=='week' and $_POST['about']=='stock'){
+                    $query = "SELECT label AS LABEL ,Count(label) as NR_OF_COPIES,(Count(label)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY  ORDER BY label asc";
+                }
+        
+                if($_POST['period']=='month' and $_POST['about']=='stock'){
+                    $query = "SELECT label AS LABEL ,Count(label) as NR_OF_COPIES,(Count(label)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY label asc";
+                }
+        
+                if($_POST['period']=='year' and $_POST['about']=='stock'){
+                    $query = "SELECT label AS LABEL ,Count(label) as NR_OF_COPIES,(Count(label)* 100 / (Select Count(*) From records)) as PERCENT FROM records WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+365 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY label asc";
+                }
+        
+                if($_POST['period']=='all-time' and $_POST['about']=='stock'){
+                    $query = "SELECT label AS LABEL ,Count(label) as NR_OF_COPIES,(Count(label)* 100 / (Select Count(*) From records)) as PERCENT FROM records ORDER BY label asc";
+                }
+        
+                if($_POST['period']=='week' and $_POST['about']=='sales'){
+                    $query = "SELECT username AS BUYER ,Count(orders.id_user) as NR_OF_PURC,(Count(orders.id_user)* 100 / (Select Count(*) From records)) as PERCENT FROM users join orders ON users.id_user = orders.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY  ORDER BY PERCENT asc";
+                }
+        
+                if($_POST['period']=='month' and $_POST['about']=='sales'){
+                    $query = "SELECT username AS BUYER ,Count(orders.id_user) as NR_OF_PURC,(Count(orders.id_user)* 100 / (Select Count(*) From records)) as PERCENT FROM users join orders ON users.id_user = orders.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY PERCENT asc";
+                }
+        
+                if($_POST['period']=='year' and $_POST['about']=='sales'){
+                    $query = "SELECT username AS BUYER ,Count(orders.id_user) as NR_OF_PURC,(Count(orders.id_user)* 100 / (Select Count(*) From records)) as PERCENT FROM users join orders ON users.id_user = orders.id_user WHERE date_added >= curdate() - INTERVAL DAYOFWEEK(curdate())+365 DAY AND date_added < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY ORDER BY PERCENT asc";
+                }
+        
+                if($_POST['period']=='all-time' and $_POST['about']=='sales'){
+                    $query = "SELECT username AS BUYER ,Count(orders.id_user) as NR_OF_PURC,(Count(orders.id_user)* 100 / (Select Count(*) From records)) as PERCENT FROM users join orders ON users.id_user = orders.id_user ORDER BY PERCENT asc";
+                }
+
+                $data = mysqli_query($conn, $query) or die("database error:". mysqli_error($conn));
+                $output="<style>#customers {";
+                $output.="font-family: Arial, Helvetica, sans-serif;";
+                $output.="border-collapse: collapse;";
+                $output.="width: 100%;}";
+
+                $output.="#customers td, #customers th {";
+                $output.="border: 1px solid #ddd;";
+                $output.="padding: 8px;}";
+                $output.="#customers tr:nth-child(even){background-color: #f2f2f2;}";
+                $output.="#customers tr:hover {background-color: #ddd;}";
+
+                $output.="#customers th {";
+                $output.="padding-top: 12px;";
+                $output.="padding-bottom: 12px;";
+                $output.="text-align: left;";
+                $output.="background-color: #4CAF50;";
+                $output.="color: white;}</style>";
+
+                $output.="<h1>Statistici</h1>";
+                
+                $output .= '<table id="customers" >';
+                foreach($data as $key => $var) {
+                    if($key===0) {
+                        $output .= '<tr>';
+                        foreach($var as $col => $val) {
+                            $output .= "<td>" . $col . '</td>';
+                        }
+                        $output .= '</tr>';
+                        foreach($var as $col => $val) {
+                            $output .= '<td>' . $val . '</td>';
+                        }
+                        $output .= '</tr>';
+                    }
+                    else {
+                        $output .= '<tr>';
+                        foreach($var as $col => $val) {
+                             $output .= '<td>' . $val . '</td>';
+                        }
+                        $output .= '</tr>';
+                    }
+                }
+                $output .= '</table>';
+                echo $output;
+	            break;
             }
         }
     ?>
