@@ -290,19 +290,19 @@
         else{            
             echo '<div class = "record-container">';
             echo '<div class = "img-magnifier-container">';
-            echo '<img src="'. substr($img_path, 2) .'" alt="vinyl-record" id="record-img">';
+            echo '<img src="'. htmlspecialchars(substr($img_path, 2)) .'" alt="vinyl-record" id="record-img">';
             echo '</div>';
         }
 
         echo '<div class="record-info">';
-        echo '<span class="info" id="artist-name">'. $record['artist']. '</span><br><br>';
-        echo '<span class="info" id="album-name">'. $record['album'] .'</span><br><br>';
-        echo '<span class="info" id="label-name">'. $record['label'] .'</span><br><br>';
+        echo '<span class="info" id="artist-name">'. htmlspecialchars($record['artist']). '</span><br><br>';
+        echo '<span class="info" id="album-name">'. htmlspecialchars($record['album']) .'</span><br><br>';
+        echo '<span class="info" id="label-name">'. htmlspecialchars($record['label']) .'</span><br><br>';
         echo '<span class="info">Genre: </span>';
-        echo '<a href = "" class = "genre-name">'. $record['genre'] .'</a><br><br>';
-        echo '<span class="info" id="price-tag">'. $record['price'] .'🥇</span><br><br>';
-        echo '<span class="info" id="condition">'. $record['cond'] .'</span><br><br>';
-        echo '<a href = \'/users/'. $record['id_user'] .'\'><span class="info" id="owner">'. $firstName .' '. $lastName .'</span></a>';
+        echo '<a href = "" class = "genre-name">'. htmlspecialchars($record['genre']) .'</a><br><br>';
+        echo '<span class="info" id="price-tag">'. htmlspecialchars($record['price']) .'🥇</span><br><br>';
+        echo '<span class="info" id="condition">'. htmlspecialchars($record['cond']) .'</span><br><br>';
+        echo '<a href = \'/users/'. $record['id_user'] .'\'><span class="info" id="owner">'. htmlspecialchars($firstName) .' '. htmlspecialchars($lastName) .'</span></a>';
         if($aud_path_no_ext === $aud_path){
             echo '<br><br><span class="info">No Preview Available!</span>';
         }
@@ -328,7 +328,7 @@
                         Add to Cart
                     </button>
                 </form>
-                <form action = "/users/'. $user->id .'/exchange/'. $record['id_user'] .'" method = "POST">
+                <form action = "/users/'. $user->id .'/exchange/'. htmlspecialchars($record['id_user']) .'" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade">
                         <img src = "/img/trade.png" alt = "trade_img">
                         Propose Trade
@@ -358,15 +358,15 @@
         }
 
         echo '<div class="profile">';
-        echo '<img src="'. $img_path .'" alt="profile_image" class="profile-image">';
+        echo '<img src="'. htmlspecialchars($img_path) .'" alt="profile_image" class="profile-image">';
         echo '<div class="person-information">';
-        echo '<h2 class="person-name">'. $user['first_name'] .' '. $user['last_name'] .'</h2>';
-        echo '<h4 class="person-short-info ">'. $user['age'] .' Years Old</h4>';
+        echo '<h2 class="person-name">'. htmlspecialchars($user['first_name']) .' '. htmlspecialchars($user['last_name']) .'</h2>';
+        echo '<h4 class="person-short-info ">'. htmlspecialchars($user['age']) .' Years Old</h4>';
         echo '<p class="person-details">'.
-            'Address: '. $user['address'] .'<br>'.
-            'Postal Code: '. $user['postal_code'] .'<br>'.
-            'E-mail: '. $user['email'] .'<br>'.
-            'Phone: '. $user['phone_nr'] .'</p>';
+            'Address: '. htmlspecialchars($user['address']) .'<br>'.
+            'Postal Code: '. htmlspecialchars($user['postal_code']) .'<br>'.
+            'E-mail: '. htmlspecialchars($user['email']) .'<br>'.
+            'Phone: '. htmlspecialchars($user['phone_nr']) .'</p>';
         echo '</div></div>'; 
     }
 
@@ -426,10 +426,10 @@
                 echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
             }
             else{
-                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+                echo '<img src="'. htmlspecialchars($img_path) .'" alt="vinyl_img" class="content-img">';
             }
             
-            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '<p class="content-info">'. htmlspecialchars($rec['artist']) .' - '. htmlspecialchars($rec['album']) .'</p>';
             echo '</a>';
         }
     }
@@ -599,10 +599,10 @@
                 echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
             }
             else{
-                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+                echo '<img src="'. htmlspecialchars($img_path) .'" alt="vinyl_img" class="content-img">';
             }
             
-            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '<p class="content-info">'. htmlspecialchars($rec['artist']) .' - '. htmlspecialchars($rec['album']) .'</p>';
             echo '</a>';
         }
     }
@@ -613,7 +613,7 @@
         $img_files = glob("../img/records/*.{jpg,gif,png,PNG,BMP,jpeg}", GLOB_BRACE);
 
         foreach($records as $rec){
-            echo '<a href="/records/'. $rec['id_record'] .'" class="content-item">';
+            echo '<a href="/records/'. htmlspecialchars($rec['id_record']) .'" class="content-item">';
         
             $img_path_no_ext = "/img/records/".$rec['id_record'];
             $img_path = $img_path_no_ext;
@@ -627,10 +627,10 @@
                 echo '<img src="/img/records/0.jpg" alt="vinyl_img" class="content-img">';
             }
             else{
-                echo '<img src="'. $img_path .'" alt="vinyl_img" class="content-img">';
+                echo '<img src="'. htmlspecialchars($img_path) .'" alt="vinyl_img" class="content-img">';
             }
             
-            echo '<p class="content-info">'. $rec['artist'] .' - '. $rec['album'] .'</p>';
+            echo '<p class="content-info">'. htmlspecialchars($rec['artist']) .' - '. htmlspecialchars($rec['album']) .'</p>';
             echo '</a>';
         }
     }

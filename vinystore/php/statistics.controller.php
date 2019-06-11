@@ -347,7 +347,7 @@
                     }
                 }
                 $output .= '</table>';
-                echo $output;
+                echo htmlspecialchars($output);
 	            break;
             }
         }

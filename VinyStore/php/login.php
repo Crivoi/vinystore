@@ -35,7 +35,6 @@
 
         if(isset($_POST['submit'])) {
             if($_POST['submit'] === 'login'){
-                echo $_POST['username'].' '.$_POST['password'].' '. strlen(md5('pulapizdacoaiele')) .'<br>';
                 $user = login($_POST['username'], $_POST['password']);
 
                 if($user != NULL){
@@ -43,7 +42,7 @@
                     $_SESSION['id_user'] = $user->id;
                 }
                 else{
-                    echo 'e null boule';
+                    echo 'Eroare la conectare';
                 }
             }
         }
