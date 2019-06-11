@@ -315,21 +315,21 @@
             </audio>
         </div>';
  
-        echo '<div class = "checkout-container">
+        echo '<div class = "checkout-container" style="@media screen and (max-width: 940px){width:120px; position:relative; float:left; padding:0px 0px;}">
                 <form action = "" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist">
+                    <button type = "submit" class = "checkout-btn" id = "wishlist-btn" name = "submit" value = "wishlist" style="width:120px; position:relative;">
                         <img src = "/img/wishlist-heart.png" alt = "wishlist_img">
                         Add to Wishlist 
                     </button>
                 </form>
-                <form action = "" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "cart">
+                <form action = "" method = "POST" style="@media screen and (max-width: 940px){width:120px; position:relative; float:left; padding:0px 0px;}">
+                    <button type = "submit" class = "checkout-btn" id = "buy-btn" name = "submit" value = "cart" style="width:150px;  position:relative;">
                         <img src = "/img/shopping-cart.png" alt = "wishlist_img">
                         Add to Cart
                     </button>
                 </form>
-                <form action = "/users/'. $user->id .'/exchange/'. htmlspecialchars($record['id_user']) .'" method = "POST">
-                    <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade">
+                <form action = "/users/'. $user->id .'/exchange/'. htmlspecialchars($record['id_user']) .'" method = "POST" style="@media screen and (max-width: 940px){width:120px; position:relative; float:left; padding:0px 0px;}">
+                    <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade" style="width:150px; position:relative;">
                         <img src = "/img/trade.png" alt = "trade_img">
                         Propose Trade
                     </button>
