@@ -18,14 +18,20 @@
         include_once 'top_nav.php';
         include_once 'bot_nav.php';
         include_once 'filters.php';
-
         include_once 'app.model.php';
+
+        if(isset($_SESSION['id_user'])){
+            $user = getLoggedUser($_SESSION['id_user']);
+        }else{
+            header('Location: /login');
+        }
 
         $endpoint = $_SERVER['REQUEST_URI'];
 
         if(preg_match('/^\/users\/[0-9]+\/records\/([0-9]*)$/', $endpoint, $id)){
 
             $record = get_record_by_id($id[1]);
+            
             $recordInfo = [];
 
             foreach($record as $rec){
@@ -56,11 +62,11 @@
         if(isset($_POST['submit'])){
             switch($_POST['submit']){
                 case 'wishlist':
-                    add_to_wishlist(get_logged_user_id(), $recordInfo['id_record']);
+                    add_to_wishlist($user->id, $recordInfo['id_record']);
                     echo '<p>Added to wishlist.</p>';
                     break;
                 case 'cart':
-                    add_to_cart(get_logged_user_id(), $recordInfo['id_record']);
+                    add_to_cart($user->id, $recordInfo['id_record']);
                     echo '<p>Added to cart.</p>';
                     break;
                 case 'trade':

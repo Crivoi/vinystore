@@ -8,7 +8,7 @@
     session_start();
 
     if(isset($_SESSION['id_user'])) {
-        header('Location: /home');
+        header('Location: /users/'. $_SESSION['id_user'] .'/home');
     } else {
         header('Location: /login');
     }

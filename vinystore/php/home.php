@@ -21,6 +21,8 @@
 
         if(isset($_SESSION['id_user'])){
             $user = getLoggedUser($_SESSION['id_user']);
+        }else{
+            header('Location: /login');
         }
     ?>
 
