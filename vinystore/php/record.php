@@ -70,7 +70,6 @@
                     echo '<p>Added to cart.</p>';
                     break;
                 case 'trade':
-                    // propose_trade();
                     echo '<p>Traded.</p>';
                     break;
                 default:

@@ -39,6 +39,7 @@
         save_file('preview', "../audio_clips/previews/");
     }
 
+    // add an artist to db
     function add_artist($artist){
         GLOBAL $conn;
 
@@ -49,6 +50,7 @@
         $insertArtist->close();
     }
 
+    // add a label to db
     function add_label($label){
         GLOBAL $conn;
 
@@ -193,6 +195,22 @@
         $insertCart->close();
     }
 
+    // propose an exchange
+    function propose_trade($owner_email, $user_email, $msg){
+        
+        $msg = wordwrap($msg, 70, "\r\n");
+
+        $subject = "Trade vinyls";
+
+        $headers = array(
+            'From' => $user_email,
+            'Reply-To' => $user_email,
+            'X-Mailer' => 'PHP/' . phpversion()
+        );
+        
+        mail($owner_email, $subject, $msg, $headers);
+    }
+
     // calls an api
     function api_call($url, $method, $payload = ''){
     
@@ -226,11 +244,8 @@
     function display_record($record){
         GLOBAL $conn;
 
-        $userInfo = $conn->prepare("SELECT first_name, last_name FROM users WHERE id_user = ?");
-        $userInfo->bind_param("s", $record['id_user']);
-        $userInfo->execute();
-
-        $name = $userInfo->get_result();
+        $user = getLoggedUser(get_logged_user_id());
+        $name = get_user_by_id($record['id_user']);
 
         foreach($name as $n){
             $firstName = $n['first_name'];
@@ -313,7 +328,7 @@
                         Add to Cart
                     </button>
                 </form>
-                <form action = "" method = "POST">
+                <form action = "/users/'. $user->id .'/exchange/'. $record['id_user'] .'" method = "POST">
                     <button type = "submit" class = "checkout-btn" id = "trade-btn" name = "submit" value = "trade">
                         <img src = "/img/trade.png" alt = "trade_img">
                         Propose Trade
@@ -359,7 +374,7 @@
     function get_all_records(){
         GLOBAL $conn;
 
-        $recordsInfo = $conn->prepare("SELECT id_record, artist, album, catalogue FROM records");
+        $recordsInfo = $conn->prepare("SELECT * FROM records");
         $recordsInfo->execute();
 
         $result = $recordsInfo->get_result();
@@ -383,7 +398,7 @@
     function get_all_labels(){
         GLOBAL $conn;
 
-        $recordsInfo = $conn->prepare("SELECT * FROM label");
+        $recordsInfo = $conn->prepare("SELECT * FROM labels");
         $recordsInfo->execute();
 
         $result = $recordsInfo->get_result();
@@ -681,6 +696,7 @@
         mail($user->email, $subject, $message, $headers);
     }
 
+    // get info of logged user
     function getLoggedUser($id) {
         GLOBAL $conn;
 
@@ -702,6 +718,7 @@
         return NULL;
     }
 
+    // log user in
     function login($username, $password) {
         GLOBAL $conn;
 
@@ -723,6 +740,7 @@
         return NULL;
     }
 
+    // register new user
     function register($username, $password, $email, $firstName, $lastName, $age, $address, $postalCode, $phoneNr) {
         GLOBAL $conn;
 
@@ -750,6 +768,7 @@
         return $id;
     }
 
+    //class for users
     class User {
         public $id;
         public $username;
@@ -766,7 +785,7 @@
             $this -> id = $id;
             $this -> username = $username;
             $this -> password = $password;
-            $this -> email= $username;
+            $this -> email= $email;
             $this -> fistName = $firstName;
             $this -> lastName = $lastName;
             $this -> age = $age;
@@ -775,5 +794,4 @@
             $this -> phoneNr = $phoneNr;
         }
     }
-
 ?>

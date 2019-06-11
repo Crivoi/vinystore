@@ -1,0 +1,47 @@
+.trade-container{
+    margin: 100px;
+}
+
+.trade-container #msg{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-family: Raleway, 'sans-serif';
+    font-size: 15px;
+    height: 15vh;
+    width: 23%;
+}
+
+.trade-container #to{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-family: Raleway, 'sans-serif';
+    font-size: 15px;
+    width: 23%;
+}
+
+.trade-container #from{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-family: Raleway, 'sans-serif';
+    font-size: 15px;
+    width: 23%;
+}
+
+.trade-container form button{
+    padding: 10px 10%;
+    background-color: #d9d9d9;
+    border: 1px solid #cccccc;
+    font-family: Raleway, 'sans-serif';
+    font-size: 20px;
+    width: 25%;
+}
+
+.trade-container form button:hover{
+    background-color: #cc9966;
+}
+
+
+::-webkit-input-placeholder{
+    font-family: Raleway, 'sans-serif';
+    font-size: 15px;
+}

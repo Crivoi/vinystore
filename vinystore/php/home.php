@@ -36,6 +36,9 @@
     </div> -->
 
     <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams.get('search'));
+
         let body = document.querySelector('body');
 
         let contentContainer = document.createElement('div');
@@ -44,85 +47,140 @@
         container.setAttribute('class', 'record-container');
         container.setAttribute('id', 'record-container-id')
         
-        fetch("http://localhost:81/api/vinyls")
+        if(!urlParams.has('search')){
+            fetch("http://localhost:81/api/vinyls")
 
-        .then(resp => resp.json())
+            .then(resp => resp.json())
 
-        .then(jsonResp => {
-            if(jsonResp.length == 0){
-                let h = document.createElement('h3');
-                h.innerText = 'Oops! Nothing in our database!';
-                h.setAttribute('style', 'display: inline; width: 100%; overflow: hidden;')
+            .then(jsonResp => {
+                if(jsonResp.length == 0){
+                    let h = document.createElement('h3');
+                    h.innerText = 'Oops! Nothing in our database!';
+                    h.setAttribute('style', 'display: inline; width: 100%; overflow: hidden;')
 
-                container.appendChild(h);
-            }
-            for(var i = 0; i < 8; i++){
-                let a = document.createElement('a');
-                a.setAttribute('href', 'records/' + jsonResp[i]['id_record']);
-                a.setAttribute('class', 'content-item');
-
-                let img = document.createElement('img');
-                if(jsonResp[i]['path'] != '/img/records/0.jpg'){
-                    jsonResp[i]['path'] = jsonResp[i]['path'].substr(2, jsonResp[i].length);
+                    container.appendChild(h);
                 }
-                console.log(jsonResp[i]['path']);
-                img.setAttribute('src', jsonResp[i]['path']);
-                img.setAttribute('alt', 'vinyl_img');
-                img.setAttribute('class', 'content-img');
+                else{
+                    jsonResp = jsonResp.reverse();
+                    for(var i = 0; i < 8; i++){
+                        let a = document.createElement('a');
+                        a.setAttribute('href', 'records/' + jsonResp[i]['id_record']);
+                        a.setAttribute('class', 'content-item');
 
-                let p = document.createElement('p');
-                p.setAttribute('class', 'content-info');
-                p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
+                        let img = document.createElement('img');
+                        if(jsonResp[i]['path'] != '/img/records/0.jpg'){
+                            jsonResp[i]['path'] = jsonResp[i]['path'].substr(2, jsonResp[i].length);
+                        }
+                        console.log(jsonResp[i]['path']);
+                        img.setAttribute('src', jsonResp[i]['path']);
+                        img.setAttribute('alt', 'vinyl_img');
+                        img.setAttribute('class', 'content-img');
 
-                a.appendChild(img);
-                a.appendChild(p);
+                        let p = document.createElement('p');
+                        p.setAttribute('class', 'content-info');
+                        p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
 
-                container.appendChild(a);
-            }
+                        a.appendChild(img);
+                        a.appendChild(p);
 
-            contentContainer.appendChild(container);
-            body.append(contentContainer);
+                        container.appendChild(a);
+                }
 
-            document.addEventListener("scroll", function(event){
-                checkForNewDiv();
+                contentContainer.appendChild(container);
+                body.append(contentContainer);
+
+                document.addEventListener("scroll", function(event){
+                    checkForNewDiv();
+                });
+                }
+                
+
+                var checkForNewDiv = function(){
+                    var lastItem = document.querySelector("#record-container-id > .content-item:last-child");
+                    var lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
+                    var pageOffset = window.pageYOffset + window.innerHeight;
+
+                    if(pageOffset > lastItemOffset - 20){
+                        let a = document.createElement('a');
+                        a.setAttribute('href', 'records/' + jsonResp[i]['id_record']);
+                        a.setAttribute('class', 'content-item');
+
+                        let img = document.createElement('img');
+                        if(jsonResp[i]['path'] != '/img/records/0.jpg'){
+                            jsonResp[i]['path'] = jsonResp[i]['path'].substr(2, jsonResp[i].length);
+                        }
+                        console.log(jsonResp[i]['path']);
+                        img.setAttribute('src', jsonResp[i]['path']);
+                        img.setAttribute('alt', 'vinyl_img');
+                        img.setAttribute('class', 'content-img');
+
+                        let p = document.createElement('p');
+                        p.setAttribute('class', 'content-info');
+                        p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
+
+                        a.appendChild(img);
+                        a.appendChild(p);
+
+                        container.appendChild(a);
+                        i++;
+                        checkForNewDiv();
+                    }
+                };
+            })
+            .catch(err => {
+                console.log(err);
             });
+        }
+        else{
+            fetch("http://localhost:81/api/search/?search=" + urlParams.get("search"))
 
-            var checkForNewDiv = function(){
-                var lastItem = document.querySelector("#record-container-id > .content-item:last-child");
-                var lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
-                var pageOffset = window.pageYOffset + window.innerHeight;
+            .then(resp => resp.json())
 
-                if(pageOffset > lastItemOffset - 20){
-                    let a = document.createElement('a');
-                a.setAttribute('href', 'records/' + jsonResp[i]['id_record']);
-                a.setAttribute('class', 'content-item');
+            .then(jsonResp => {
+                console.log(jsonResp);
+                console.log(jsonResp.length);
+                if(jsonResp.length == 0){
+                    let h = document.createElement('h3');
+                    h.innerText = 'Oops! Nothing to display!';
+                    h.setAttribute('style', 'display: inline; width: 100%; overflow: hidden;')
 
-                let img = document.createElement('img');
-                if(jsonResp[i]['path'] != '/img/records/0.jpg'){
-                    jsonResp[i]['path'] = jsonResp[i]['path'].substr(2, jsonResp[i].length);
+                    container.appendChild(h);
                 }
-                console.log(jsonResp[i]['path']);
-                img.setAttribute('src', jsonResp[i]['path']);
-                img.setAttribute('alt', 'vinyl_img');
-                img.setAttribute('class', 'content-img');
+                else{
+                    jsonResp = jsonResp.reverse();
+                    for(var i = 0; i < jsonResp.length; i++){
+                        let a = document.createElement('a');
+                        a.setAttribute('href', 'records/' + jsonResp[i]['id_record']);
+                        a.setAttribute('class', 'content-item');
 
-                let p = document.createElement('p');
-                p.setAttribute('class', 'content-info');
-                p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
+                        let img = document.createElement('img');
+                        if(jsonResp[i]['path'] != '/img/records/0.jpg'){
+                            jsonResp[i]['path'] = jsonResp[i]['path'].substr(2, jsonResp[i].length);
+                        }
+                        console.log(jsonResp[i]['path']);
+                        img.setAttribute('src', jsonResp[i]['path']);
+                        img.setAttribute('alt', 'vinyl_img');
+                        img.setAttribute('class', 'content-img');
 
-                a.appendChild(img);
-                a.appendChild(p);
+                        let p = document.createElement('p');
+                        p.setAttribute('class', 'content-info');
+                        p.innerText = jsonResp[i]["artist"] + ' - ' + jsonResp[i]['album'];
 
-                container.appendChild(a);
-                i++;
-                checkForNewDiv();
+                        a.appendChild(img);
+                        a.appendChild(p);
+
+                        container.appendChild(a);
+                    }
                 }
 
-            };
-        })
-        .catch(err => {
-            alert(err);
-        });
+                contentContainer.appendChild(container);
+                body.append(contentContainer);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        
     </script>
 </body>
 </html>

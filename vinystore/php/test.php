@@ -1,7 +1,12 @@
 <?php    
+  include_once 'app.model.php';
+  $queries = array();
+  parse_str($_SERVER['QUERY_STRING'], $queries);
+  print_r($queries);
 
-  ini_set("SMTP","ssl://smtp.gmail.com");
-  ini_set("smtp_port","587");
-
-  echo mail('andrei.crivoi1997@gmail.com', 'subject', 'message');
+  $records = get_all_records();
+  foreach($records as $rec){
+    print_r($rec);
+    echo '<br>';
+  }
 ?>

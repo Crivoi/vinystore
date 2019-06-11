@@ -93,7 +93,7 @@
                     
                     add_record($_POST['artist'], $_POST['release'], $_POST['label'], $_POST['cat'], $_POST['genre'], $_POST['condition'],  $_POST['price']);
                     add_artist($_POST['artist']);
-                    add_label($_POST['artist']);
+                    add_label($_POST['label']);
             }
             else{
                 echo "<br><br><h2>Please fill in all the information needed!</h2>";

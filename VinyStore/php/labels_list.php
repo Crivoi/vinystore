@@ -64,7 +64,7 @@
         artistsList.setAttribute('class', 'artist-list');
 
         let head = document.createElement('h3');
-        head.innerText = 'Our Artists';
+        head.innerText = 'Our Labels';
 
         let hr = document.createElement('hr');
 
@@ -75,14 +75,14 @@
 
         body.appendChild(container);
 
-        fetch ("http://localhost:81/api/artists")
+        fetch ("http://localhost:81/api/labels")
 
         .then(resp => resp.json())
 
         .then(jsonResp => {
             jsonResp = jsonResp.sort(function(a, b){
-                var keyA = a.artist_name;
-                var keyB = b.artist_name;
+                var keyA = a.label_name;
+                var keyB = b.label_name;
                 if(keyA > keyB) return 1;
                 if(keyB > keyA) return -1;
                 return 0;
@@ -98,7 +98,7 @@
 
             for(var i = 0; i < 8; i++){
                 let p = document.createElement('p');
-                p.innerText = jsonResp[i]['artist_name'];
+                p.innerText = jsonResp[i]['label_name'];
 
                 artistsList.appendChild(p);
             }
@@ -114,7 +114,7 @@
 
                 if(pageOffset > lastItemOffset - 20){
                     let p = document.createElement('p');
-                    p.innerText = jsonResp[i]['artist_name'];
+                    p.innerText = jsonResp[i]['label_name'];
 
                     artistsList.appendChild(p);
                     i++;
