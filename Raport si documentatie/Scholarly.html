@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="description" content="VinyStore aplication documentation">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author1" content="Crivoi Andrei">
+    <meta name="author2" content="Martonca Iosif-Rafael">
+    <meta name="author1-github" content="https://github.com/Crivoi">
+    <meta name="author2-github" content="https://github.com/rafael932">
+    <link rel="stylesheet" href="Scholarly.css">
+    <title>VinyStore</title>
+</head>
+<body>
+    <h2>Raportul aplicatiei <span resources="https://github.com/Crivoi/vinystore">VinyStore</span></h2>
+    <a href="https://github.com/Crivoi/vinystore">Vinyl Store</a><br>
+    <a href="https://github.com/Crivoi">Crivoi Andrei</a><br>
+    <a href="https://github.com/rafael932">Martonca Iosif Rafael</a><br>
+    <span >11-Aprilie-2019</span>
+
+       <h3>Scurta introducere</h3>
+       <p>Acest proiect are ca scop crearea unei platforme unde oricine isi poate crea un cont
+           si vinde Vinyluri in schimbul altor vinyluri sau in schimbul unor bani.
+           Acestea vor fi trimise prin orice forma de curierat se doreste.
+       </p>
+    
+      <h3>Cerinta proiectului</h3>
+      <p>VinyStore
+        Sa se construiasca un magazin online de vinyluri unde utilizatorii pot cumpara, 
+        vinde sau schimba intre ei albume. Aplicatia va oferi cautari si filtrari ale 
+        anunturilor in functie de data adaugarii sau popularitate.
+        
+        Descrierea aplicatiie
+        Un utilizator poate crea un nou anunt de vanzare/schimb sau poate cumpara 
+        un album deja disponibil. Pentru fiecare <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyl</a>, se vor pune la dispozitie detalii vizand
+         piesele, autorul (artist, formatie, compilatie), anul aparitiei, codul de bare, descriere succinta, 
+         starea (nou, folosit, raritate), proprietarul, plus o scurta selectie de melodii si/sau video-clipuri
+          ce pot fi redate pe platforma. Dupa adaugarea in cos si confirmarea platii, un timp estimativ de livrare 
+          va fi transmis prin email catre cumparator. Suplimentar, se vor genera rapoarte in formatele HTML, CSV si 
+          PDF referitoare la stocuri, vanzari realizate, cumparatori fideli pentru o perioada de timp (saptamana, luna, semestru, an). 
+          Bonus: utilizarea datelor oferite de Discogs.com.
+        
+        Resurse suplimentare:
+        https://www.discogs.com/developers/</p>
+       
+    <h3>Modul de lucru la proiect</h3>
+     <p>La inceput, intainte de a incepe munca propriuzisa la proiect am stabilit
+        cum vom lucra asta insemnand stabilirea de deadlineuri pentru anumite etape ale
+        fiecarei persoane, impartirea de taskuri intre membrii echipe, hotararea de comun acord
+        a unei platforme pe care v-a fi incarcat proiectul cum ar fi <a href="https://github.com/">Github</a> si intalniri periodice cu toti
+        membrii echipei pentru integrarea patilor proiectului dar si pentru a rezolva problemele aparute pe parcurs
+        in implementarea anumitor taskuri.
+     </p>
+
+    <h3>Functionalitatile siteului</h3>
+    <p> In cadrul aplicatiei se pot adauga vinyluri de vanzare, se pot crea conturi, te poti loga, 
+        poti cumpara un vinyl sau mai multe, poti cauta un vinyl dupa nume sau dupa filtre. 
+    </p>
+
+    <h3>Stadiul actual al proiectului</h3>
+    <p> Functionalitatile de baza actuale ale proiectului sunt o interfata grafica usor de utilizat si 
+        totodata atractiva, optiune de a adauga un vinyl, optiune de a cumpara un vinyl, optiunea de a cauta
+        un vinyl dupa anumite filtre cum ar fi gen, optiunea de a vizualiza o lista cu toti artistii de vinyl-uri 
+        de pe site existenti, vizualizarea de statistici.
+    </p>
+
+    <h3>Lucruri ce ar mai putea fi facute la proiect</h3>
+    <p>Lucuri ce ar mai putea fi adaugare ar fi conectarea prin intermediul unei retele de socializare sau
+        prin gmail, verificarea conturilor false sau a celor neutilizate extrem de mult timp, descarcara de 
+        statistici mai complexe in functie de timpul petrecut pe site sau pozitionarea mouseului pe ecran.
+    </p>
+
+    <h3>Baza de date</h3>
+    <p>Baza de date este creata in <a href="https://ro.wikipedia.org/wiki/MySQL">mySQL</a> cu ajutorul 
+        <a href="https://ro.wikipedia.org/wiki/MySQL">PHPmyAdmin</a>. 
+    </p>
+
+    <h3>Implementarea in acest moment</h3>
+    <p>In momentul de fata toate cerintele proiectului sunt implementate. 
+    </p>
+
+    <h3>Descriere de utilizare a aplicatiei VinyStore</h3>
+    <p>Aplicatia VinyStore este o aplicatie in care orice utilizator poate vinde sau cumpara un vinyl in stadiu nou sau utilizat.
+       In aplicatie exista o pagina de home(index) unde utilizatorii pot vedea toate vinylurile existente in acest moment pe site.
+       In momentul in care se apasa pe un <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyl</a>, se deschide o noua pagina a recordului unde apar detalii despre <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyl</a>, o poza cu
+       vinylul dar si alte detalii precum un scurt sample muzical de pe <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyl</a>. Din aceasta pagina se pot adauga <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinylurile</a> intr-un cos de cumparaturi.
+       In cosul de cumparaturi se pot adauga sau sterge <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyluri</a> in functie de ce exista in cos.
+       Tot din pagina de records se pot adauga albume in <a href="https://en.wikipedia.org/wiki/Wish_list">wishlist</a>, o lista in care iti poti salva toate albumele preferate sau in care poti selecta
+       ce doresti sa iti cumperi in viitorul apropiat.
+       Din cosul de cumparaturi se poate selecta optiunea de a cumpara ceea ce exista in cosul de cumparaturi.
+       In momentul in care se decide sa se faca check-out, utilizatorul este informat prin email cu un timp estimativ despre durata in care
+       ii vor fi livrate bunurile, dar este creata si in baza de date o lista in care se pot vedea ce albume au fost comandate dar si data in care 
+       au fost comandate.
+       In aplicatie mai pot fi cautate <a href="https://en.wikipedia.org/wiki/Phonograph_record">vinyluri</a> din pagina de home in functie de numele acestora.
+       Tot in pagina poti vedea profilul unor utilizatori, sau profilul tau de utilizator.
+       In pagina de statistici se pot descarca diverse statistici in pdf, html sau csv in functie de vanzari 
+       sau de durata de timp.
+       In pagina de <a href="https://en.wikipedia.org/wiki/Exchange_(organized_market)">exchange</a> poti comunica cu un alt user despre un album pe care doresti sa il schimbi cu un alt album de al lui.
+       Selectezi un album din pagina de home iar cand intri in pagina de index se poate selecta schimbul pe care doresti sa il faci.
+       Comunicarea se face exclusiv prin intermediul adresei de email.
+       Pagina cu lista de artisti contine o lista predefinita de artisti.
+       Pagina de <a href="https://en.wikipedia.org/wiki/Login">login</a> si <a href="https://en.wikipedia.org/wiki/Registered_user">register</a> permit inregistrarea respectiv logarea in intermediul siteului.
+
+
+    </p>
+</body>
+
+</html>
